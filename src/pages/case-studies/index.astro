@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyCard from '../../components/CaseStudyCard.astro';
+import { getCollection } from 'astro:content';
+
+const cases = await getCollection('caseStudies');
+const sorted = cases.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="Case Studies — Crescent Moon Design">
+  <section class="case-studies">
+    <div class="wrap">
+      <p class="tag">Our Work</p>
+      <h1>Case Studies</h1>
+      <p class="case-studies__intro">
+        Real results for real businesses. Each project is a story of finding what's broken, fixing it properly, and measuring what happened.
+      </p>
+
+      <div class="case-grid">
+        {sorted.map(c => (
+          <CaseStudyCard
+            title={c.data.title}
+            client={c.data.client}
+            tagline={c.data.tagline}
+            category={c.data.category}
+            stats={c.data.stats}
+            slug={c.id}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .case-studies {
+    padding: 5rem 0 6rem;
+  }
+
+  .case-studies__intro {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+</style>

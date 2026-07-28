@@ -1,0 +1,694 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="AI Automation — Crescent Moon Design" description="Custom code that handles repetitive back-office tasks. Fixed price, no subscriptions.">
+  <!-- Hero -->
+  <section class="auto-hero">
+    <div class="wrap">
+      <span class="tag">Quiet, reliable software for the admin you hate</span>
+      <h1>We write custom code that handles repetitive back-office tasks.</h1>
+      <p class="auto-hero__lede">Chasing unpaid invoices, moving data between apps, and compiling weekly reports. You own the code outright, with no recurring per-user software fees.</p>
+      <p class="auto-hero__price">Fixed price: $300 – $10,000. No hourly billing. No subscriptions.</p>
+      <div class="auto-hero__actions">
+        <a class="btn btn--primary" href="#contact">Book a 15-minute scoping call</a>
+        <a class="btn btn--ghost" href="#pricing">View pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cost Table -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <h2>What actually costs you money</h2>
+      <p class="section-sub">Big strategic blunders rarely drain a budget as fast as daily administrative friction. When someone has to manually copy numbers, send routine payment reminders, or assemble audit files, work slows down and small errors add up.</p>
+      <table class="cost-table">
+        <thead>
+          <tr><th>The task</th><th>What happens manually</th><th>The automated fix</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Invoice chasing</td>
+            <td>Follow-ups go out late or get forgotten. Cash sits in someone else's bank account.</td>
+            <td>Reminders go out on a schedule and stop the minute the payment hits your account.</td>
+          </tr>
+          <tr>
+            <td>Data re-entry</td>
+            <td>Typing the same customer details into a CRM, accounting tool, and spreadsheet.</td>
+            <td>Background scripts move, reformat, and check data automatically.</td>
+          </tr>
+          <tr>
+            <td>Compliance logs</td>
+            <td>Records live in scattered email threads, creating a scramble during audit prep.</td>
+            <td>System actions write timestamped entries straight to a secure archive.</td>
+          </tr>
+          <tr>
+            <td>Weekly reports</td>
+            <td>Someone spends every Monday morning copying numbers into a presentation.</td>
+            <td>Reports pull live data and land in your inbox every Monday at 6:00 AM.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section" id="pricing">
+    <div class="wrap">
+      <h2>Fixed-price packages from $300 to $10,000</h2>
+      <p class="section-sub">We do not offer vague estimates or charge open-ended hourly rates. You get a fixed quote before any work starts so you can evaluate the exact return on investment.</p>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <span class="price-card__range">$300 – $1,500</span>
+          <h3>Small scripts</h3>
+          <p class="price-card__best-for">Best for: Eliminating one specific daily nuisance.</p>
+          <p class="price-card__turnaround">Turnaround: 1–3 days</p>
+          <ul class="price-card__list">
+            <li>Forwarding web form leads directly to a private Slack or SMS alert</li>
+            <li>A script that cleans and formats vendor spreadsheets every morning</li>
+            <li>Syncing calendar bookings with a customer database</li>
+          </ul>
+          <p class="price-card__includes"><strong>Includes:</strong> Setup, testing, and 14 days of monitoring.</p>
+        </div>
+        <div class="price-card price-card--featured">
+          <span class="price-card__range">$1,500 – $4,500</span>
+          <h3>Workflow pipelines</h3>
+          <p class="price-card__best-for">Best for: Streamlining an entire administrative process.</p>
+          <p class="price-card__turnaround">Turnaround: 1–2 weeks</p>
+          <ul class="price-card__list">
+            <li>An automated accounts receivable pipeline with custom escalation schedules</li>
+            <li>Dispatch tools that assign incoming jobs to technicians based on location and schedules</li>
+            <li>Client onboarding setups that generate contracts, send invoices, and create project folders</li>
+          </ul>
+          <p class="price-card__includes"><strong>Includes:</strong> Error handling, a team walkthrough, and 30 days of support.</p>
+        </div>
+        <div class="price-card">
+          <span class="price-card__range">$4,500 – $10,000</span>
+          <h3>Operational engines</h3>
+          <p class="price-card__best-for">Best for: Replacing complex, manual back-office systems.</p>
+          <p class="price-card__turnaround">Turnaround: 2–4 weeks</p>
+          <ul class="price-card__list">
+            <li>Document processing that reads scanned PDFs or invoices and pushes extracted data into your accounting software</li>
+            <li>A custom dashboard combining inventory, sales, and labor metrics into a single view</li>
+            <li>Automated compliance logging with built-in audit trails</li>
+          </ul>
+          <p class="price-card__includes"><strong>Includes:</strong> System documentation, parallel shadow testing, error alerts, and 60 days of active monitoring.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Build -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <h2>How we build it so it stays running</h2>
+      <p class="section-sub">Code carries the logic. AI handles messy inputs.</p>
+      <div class="build-grid">
+        <div class="build-points">
+          <div class="build-point">
+            <h4>AI handles messy inputs</h4>
+            <p>Language models read scanned PDFs, parse messy emails, or extract text from images. That's where they're good.</p>
+          </div>
+          <div class="build-point">
+            <h4>Rule-based code handles the logic</h4>
+            <p>Once the data is structured, standard code takes over. The same input produces the exact same output every single time. Most automation projects break because developers rely on AI models to handle exact math or make strict logical choices. AI models are unreliable at that. We don't.</p>
+          </div>
+          <div class="build-point">
+            <h4>Clear error reporting</h4>
+            <p>If an external tool goes down or an incoming file is corrupt, the system flags the issue and alerts you immediately instead of guessing or failing silently.</p>
+          </div>
+        </div>
+        <div class="terminal">
+          <span class="t-time">12:04:11</span> &nbsp;<span class="t-event">intake.invoice.received</span> &nbsp;<span class="t-key">source=email</span><br/>
+          <span class="t-time">12:04:12</span> &nbsp;<span class="t-event">extract.vendor</span> &nbsp;<span class="t-key">confidence=0.98</span><br/>
+          <span class="t-time">12:04:12</span> &nbsp;<span class="t-event">validate.invoice_total</span> &nbsp;<span class="t-pass">status=PASS</span><br/>
+          <span class="t-time">12:04:13</span> &nbsp;<span class="t-event">check.duplicate</span> &nbsp;<span class="t-pass">status=PASS</span><br/>
+          <span class="t-time">12:04:13</span> &nbsp;<span class="t-event">accounting.create_draft</span> &nbsp;<span class="t-success">status=SUCCESS</span><br/>
+          <span class="t-time">12:04:14</span> &nbsp;<span class="t-event">audit.log.append</span> &nbsp;<span class="t-key">trace=7f3a...</span><br/>
+          <span class="t-time">12:04:14</span> &nbsp;<span class="t-event">notify.owner</span> &nbsp;<span class="t-key">channel=slack</span><br/>
+          <br/>
+          <span class="t-time">12:06:42</span> &nbsp;<span class="t-event">validate.tax_id</span> &nbsp;<span class="t-review">status=REVIEW_REQUIRED</span><br/>
+          <span class="t-time">12:06:42</span> &nbsp;<span class="t-event">queue.human_review</span> &nbsp;<span class="t-key">owner=operations</span><br/>
+          <br/>
+          <span class="t-time">12:06:43</span> &nbsp;<span class="t-cursor"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local AI -->
+  <section class="section" id="local-ai">
+    <div class="wrap">
+      <h2>Local AI for sensitive data</h2>
+      <p class="section-sub">Some data should never touch a third-party API. Patient records, payment details, legal filings, student information, proprietary financials. For those workflows, we deploy AI models on your own infrastructure — your server, your cloud tenant, or a fully air-gapped machine. Nothing leaves your network. Nothing is used to train someone else's model.</p>
+
+      <div class="local-grid">
+        <div class="local-card">
+          <h4>On-premise model deployment</h4>
+          <p>Open-weight language models (Llama, Mistral, Phi) running on your hardware or private cloud. Inference happens locally. Your data is processed, extracted, and classified without a single packet reaching an external endpoint.</p>
+        </div>
+        <div class="local-card">
+          <h4>Air-gapped option</h4>
+          <p>For environments with zero internet tolerance, we package the entire pipeline — model, validation logic, and interface — as a self-contained unit that runs on a disconnected machine. Updates delivered via signed offline bundles.</p>
+        </div>
+        <div class="local-card">
+          <h4>Full input/output logging</h4>
+          <p>Every prompt sent to the model and every response received is logged with timestamps, hashed for integrity, and stored in your audit archive. You can reconstruct exactly what the system saw and what it produced at any point in time.</p>
+        </div>
+        <div class="local-card">
+          <h4>No training on your data</h4>
+          <p>External AI providers may use your inputs to improve their models. Locally deployed models cannot. Your records, your invoices, your patient data — none of it becomes part of a training corpus you didn't consent to.</p>
+        </div>
+      </div>
+
+      <div class="compliance-block">
+        <h3>Validated against</h3>
+        <p class="compliance-sub">System architecture and data handling are designed to meet the technical safeguards required by:</p>
+        <div class="compliance-grid">
+          <div class="compliance-item">
+            <span class="comp-acronym">HIPAA</span>
+            <span class="comp-desc">Protected health information. Access controls, audit trails, encryption at rest and in transit, minimum-necessary data handling.</span>
+          </div>
+          <div class="compliance-item">
+            <span class="comp-acronym">SOC 2 Type II</span>
+            <span class="comp-desc">Security, availability, and confidentiality trust criteria. Continuous monitoring, documented change management, incident response.</span>
+          </div>
+          <div class="compliance-item">
+            <span class="comp-acronym">PCI DSS</span>
+            <span class="comp-desc">Payment card data. Network segmentation, no storage of full PAN, encrypted transmission, restricted access logging.</span>
+          </div>
+          <div class="compliance-item">
+            <span class="comp-acronym">GDPR / CCPA</span>
+            <span class="comp-desc">Personal data rights. Data minimization, processing records, right-to-delete pipelines, no cross-border transfer without consent.</span>
+          </div>
+          <div class="compliance-item">
+            <span class="comp-acronym">NIST 800-53</span>
+            <span class="comp-desc">Federal security controls. Risk assessment, system hardening, contingency planning, configuration management baselines.</span>
+          </div>
+          <div class="compliance-item">
+            <span class="comp-acronym">ISO 27001</span>
+            <span class="comp-desc">Information security management. Documented ISMS controls, internal audit readiness, supplier risk management.</span>
+          </div>
+          <div class="compliance-item">
+            <span class="comp-acronym">FERPA</span>
+            <span class="comp-desc">Education records. Consent-gated access, directory information controls, breach notification within required timelines.</span>
+          </div>
+          <div class="compliance-item">
+            <span class="comp-acronym">State breach laws</span>
+            <span class="comp-desc">All 50 states. Encryption safe-harbor alignment, notification clock tracking, incident documentation templates.</span>
+          </div>
+        </div>
+        <p class="compliance-note">We build to the technical safeguards these frameworks require. Formal certification (e.g., a SOC 2 audit report) is completed by your organization's compliance team or an accredited auditor using our system documentation as evidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <h2>The 5-step process</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step__num">01</span>
+          <div>
+            <h4>The 15-minute call</h4>
+            <p>Tell us about the task taking up your team's time. We will tell you on the call whether it takes a $300 script or a $3,000 pipeline.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step__num">02</span>
+          <div>
+            <h4>Acceptance criteria</h4>
+            <p>We write down clear rules for what a correct result looks like before writing any code.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step__num">03</span>
+          <div>
+            <h4>Build and test</h4>
+            <p>We build the automation in a test environment and feed it bad data on purpose to make sure it handles errors cleanly.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step__num">04</span>
+          <div>
+            <h4>Shadow mode</h4>
+            <p>The script runs in the background alongside your team. We verify the results against real daily work before turning on live actions.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step__num">05</span>
+          <div>
+            <h4>Hand-off</h4>
+            <p>We launch the system, show your team how to monitor it, and cover maintenance during your support window.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guarantee-box">
+        <h3>The guarantee</h3>
+        <p>If an automation we build produces an error caused by a bug in our code, we fix it free of charge. No support tickets, no unexpected invoices. We build software to take work off your plate, not add maintenance to your calendar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section final-cta" id="contact">
+    <div class="wrap">
+      <h2>What is the task your team hates most?</h2>
+      <p>Tell us about the spreadsheet, the invoice chase, or the copy-paste routine that wastes your time every week. We will give you a clear, fixed price to fix it.</p>
+      <a class="btn btn--primary" href="mailto:automation@crescentmoondesign.com">Book a 15-minute call</a>
+      <span class="final-cta__email">Or email us directly: <a href="mailto:automation@crescentmoondesign.com">automation@crescentmoondesign.com</a></span>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* --- Hero --- */
+  .auto-hero {
+    padding: 5.5rem 0 4.5rem;
+  }
+
+  .auto-hero .tag {
+    font-family: var(--font-mono);
+    display: block;
+    margin-bottom: 1.2rem;
+    color: var(--blue);
+  }
+
+  .auto-hero h1 {
+    max-width: 640px;
+    margin-bottom: 1.2rem;
+  }
+
+  .auto-hero__lede {
+    font-size: 1.05rem;
+    max-width: 580px;
+    margin-bottom: 0.8rem;
+  }
+
+  .auto-hero__price {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--fg);
+    margin-bottom: 2rem;
+  }
+
+  .auto-hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* --- Section Sub --- */
+  .section-sub {
+    font-size: 0.95rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* --- Cost Table --- */
+  .cost-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  .cost-table th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    padding: 0.8rem 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .cost-table td {
+    padding: 1.1rem 1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .cost-table td:first-child {
+    font-weight: 600;
+    color: var(--fg);
+    white-space: nowrap;
+  }
+
+  .cost-table td:nth-child(2) {
+    color: var(--muted);
+  }
+
+  .cost-table td:last-child {
+    color: #2ecc71;
+    font-size: 0.85rem;
+  }
+
+  /* --- Pricing --- */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .price-card {
+    background: var(--bg-solid);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price-card--featured {
+    border-color: var(--blue);
+  }
+
+  .price-card__range {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 0.3rem;
+  }
+
+  .price-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .price-card__best-for {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .price-card__turnaround {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
+
+  .price-card__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex: 1;
+  }
+
+  .price-card__list li {
+    font-size: 0.82rem;
+    color: var(--muted);
+    padding-left: 1.2rem;
+    position: relative;
+    list-style: none;
+  }
+
+  .price-card__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--blue);
+  }
+
+  .price-card__includes {
+    font-size: 0.75rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+  }
+
+  .price-card__includes strong {
+    color: var(--fg);
+    font-weight: 600;
+  }
+
+  /* --- Build --- */
+  .build-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .build-points {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .build-point h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .build-point p {
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+
+  .terminal {
+    background: #0d0d0d;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    line-height: 2.1;
+    overflow-x: auto;
+  }
+
+  .t-time { color: #555; }
+  .t-event { color: var(--fg); }
+  .t-key { color: var(--muted); }
+  .t-pass { color: #2ecc71; }
+  .t-success { color: var(--blue); }
+  .t-review { color: var(--red); }
+  .t-cursor {
+    display: inline-block;
+    width: 7px;
+    height: 13px;
+    background: #2ecc71;
+    animation: blink 1.2s step-end infinite;
+    vertical-align: middle;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  /* --- Local AI --- */
+  .local-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .local-card {
+    background: var(--bg-solid);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem 1.5rem;
+  }
+
+  .local-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .local-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* --- Compliance --- */
+  .compliance-block {
+    background: var(--bg-solid);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: 2.5rem 2rem;
+  }
+
+  .compliance-block h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+  }
+
+  .compliance-sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .compliance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .compliance-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .comp-acronym {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .comp-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .compliance-note {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-style: italic;
+    border-top: 1px solid var(--border);
+    padding-top: 1.2rem;
+  }
+
+  /* --- Process --- */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 1.25rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .step:last-child {
+    border-bottom: none;
+  }
+
+  .step__num {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--blue);
+    text-align: right;
+    padding-top: 0.2rem;
+  }
+
+  .step h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .step p {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* --- Guarantee --- */
+  .guarantee-box {
+    border: 2px solid var(--blue);
+    border-radius: var(--border-radius);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+
+  .guarantee-box h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+  }
+
+  .guarantee-box p {
+    font-size: 0.92rem;
+    color: var(--muted);
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  /* --- Final CTA --- */
+  .final-cta {
+    text-align: center;
+    padding: 5rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .final-cta h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+  }
+
+  .final-cta p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 2rem;
+  }
+
+  .final-cta__email {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 1.2rem;
+    display: block;
+  }
+
+  .final-cta__email a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 900px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .build-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .local-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .compliance-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cost-table {
+      font-size: 0.78rem;
+    }
+
+    .cost-table td:first-child {
+      white-space: normal;
+    }
+  }
+</style>

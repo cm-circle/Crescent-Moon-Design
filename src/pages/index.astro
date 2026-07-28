@@ -1,0 +1,418 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const cases = await getCollection('caseStudies');
+const featured = cases.filter(c => c.data.featured);
+---
+
+<BaseLayout title="Crescent Moon Design — We craft digital experiences that eclipse the ordinary.">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__moon-container">
+      <div class="hero__moon-glow"></div>
+      <svg class="hero__moon-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <mask id="eclipse-mask">
+            <rect width="400" height="400" fill="black"/>
+            <circle cx="200" cy="200" r="185" fill="white"/>
+            <circle class="eclipse-shadow" cx="620" cy="200" r="130" fill="black"/>
+          </mask>
+        </defs>
+        <image class="moon-img" href="/moon.webp"
+               x="15" y="15" width="370" height="370"
+               preserveAspectRatio="xMidYMid slice"
+               mask="url(#eclipse-mask)"/>
+      </svg>
+
+      <div class="hero__text">
+        <h1 class="hero__title">Crescent Moon Design</h1>
+        <p class="hero__tagline">We craft digital experiences that eclipse the ordinary</p>
+        <p class="hero__services">Web Design &bull; Social Media &bull; SEO / GEO</p>
+        <a href="#contact" class="btn btn--primary hero__cta">Get Started</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll-cue">
+      <span class="hero__scroll-text">Scroll</span>
+      <span class="hero__scroll-arrow">↓</span>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <div class="content-sections">
+    <section class="section-panel" id="section-web">
+      <span class="tag">01 — Web Design</span>
+      <h2>Sites that pull their weight</h2>
+      <p>High-performance, responsive builds engineered for speed and story. We design and develop sites that convert visitors into believers — accessible, fast, and unmistakably yours.</p>
+    </section>
+
+    <section class="section-panel" id="section-social">
+      <span class="tag">02 — Social Media</span>
+      <h2>Content with gravitational pull</h2>
+      <p>Strategy, calendars, and creative that keep your audience in orbit. We build presence across platforms with consistent voice, visual identity, and measurable growth.</p>
+    </section>
+
+    <section class="section-panel" id="section-seo">
+      <span class="tag">03 — SEO / GEO</span>
+      <h2>Found by the right people</h2>
+      <p>Search and generative engine optimization that maps the trajectory from first query to lasting loyalty. Technical audits, content architecture, and local visibility.</p>
+    </section>
+  </div>
+
+  <!-- Case Studies Preview -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <span class="tag">Our Work</span>
+      <h2>Case Studies</h2>
+      <p class="section-intro">
+        Real results for real businesses. Each project is a story of finding what's broken, fixing it properly, and measuring what happened.
+      </p>
+      <div class="case-grid">
+        {cases.map(c => (
+          <a href={`/case-studies/${c.id}`} class="case-card">
+            <span class="case-card__category">{c.data.category}</span>
+            <h3 class="case-card__title">{c.data.title}</h3>
+            <p class="case-card__tagline">{c.data.tagline}</p>
+            <div class="case-card__stats">
+              {c.data.stats.slice(0, 2).map(stat => (
+                <div class="case-card__stat">
+                  <span class="case-card__stat-value">{stat.value}</span>
+                  <span class="case-card__stat-label">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+            <span class="case-card__link">Read Case Study →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Automation Callout -->
+  <section class="section automation-callout" id="contact">
+    <div class="wrap">
+      <div class="automation-inner">
+        <span class="tag">New Service</span>
+        <h2>AI Automation for Back-Office Tasks</h2>
+        <p>Custom code that handles repetitive admin work — invoice chasing, data re-entry, compliance logging. Fixed price, no subscriptions.</p>
+        <a href="/services/automation" class="btn btn--ghost">Learn More →</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<!-- GSAP animations — loaded async, deferred -->
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script type="module" src="/src/scripts/animations.js"></script>
+
+<style>
+  /* --- Hero --- */
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 12vh;
+    overflow: hidden;
+    background: var(--bg) url('/nightsky.webp') center center / cover no-repeat fixed;
+  }
+
+  @supports not (background: url('/nightsky.webp')) {
+    .hero {
+      background: var(--bg) url('/nightsky.jpg') center center / cover no-repeat fixed;
+    }
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 5, 8, 0.55);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero__moon-container {
+    position: relative;
+    width: clamp(420px, 58vw, 780px);
+    height: clamp(420px, 58vw, 780px);
+    flex-shrink: 0;
+    margin-left: clamp(-60px, -4vw, -20px);
+    overflow: visible;
+    z-index: 2;
+  }
+
+  .hero__moon-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .hero__moon-glow {
+    position: absolute;
+    inset: -15%;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--glow) 0%, transparent 65%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .hero__text {
+    position: absolute;
+    z-index: 2;
+    left: 48%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+    overflow: visible;
+    white-space: nowrap;
+  }
+
+  .hero__title {
+    font-size: clamp(2.7rem, 4.8vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    margin-bottom: 0.9rem;
+    color: var(--fg);
+  }
+
+  .hero__tagline {
+    font-size: clamp(1.28rem, 2.1vw, 1.65rem);
+    font-weight: 300;
+    color: var(--accent);
+    margin-bottom: 1.4rem;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+  }
+
+  .hero__services {
+    font-size: clamp(0.98rem, 1.5vw, 1.2rem);
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  .hero__cta {
+    margin-top: 1.6rem;
+    opacity: 0;
+  }
+
+  .hero__scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    z-index: 2;
+  }
+
+  .hero__scroll-text {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+
+  .hero__scroll-arrow {
+    font-size: 1.1rem;
+    color: var(--accent);
+    animation: bounce 1.8s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* --- Content Sections --- */
+  .content-sections {
+    position: relative;
+    z-index: 1;
+    background: var(--bg-solid);
+  }
+
+  .section-panel {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 7rem 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-panel h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-panel > p {
+    font-size: clamp(1rem, 1.7vw, 1.12rem);
+    line-height: 1.85;
+    color: var(--muted);
+    max-width: 640px;
+  }
+
+  /* --- Case Studies --- */
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+
+  .case-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2.5rem 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .case-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-3px);
+  }
+
+  .case-card__category {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--red);
+  }
+
+  .case-card__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--fg);
+  }
+
+  .case-card__tagline {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .case-card__stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .case-card__stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .case-card__stat-value {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .case-card__stat-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  .case-card__link {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--red);
+    margin-top: 0.5rem;
+  }
+
+  /* --- Automation Callout --- */
+  .automation-callout {
+    background: var(--bg-solid);
+    padding-bottom: 5rem;
+  }
+
+  .automation-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    background: rgba(46, 196, 182, 0.04);
+    border: 1px solid rgba(46, 196, 182, 0.15);
+    border-radius: var(--border-radius);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .automation-inner h2 {
+    margin: 0.8rem 0 1rem;
+    color: var(--blue);
+  }
+
+  .automation-inner p {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 1.5rem;
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 700px) {
+    .hero {
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .hero__moon-container {
+      margin-left: 0;
+      width: clamp(280px, 85vw, 480px);
+      height: clamp(280px, 85vw, 480px);
+    }
+
+    .hero__text {
+      position: relative;
+      left: auto;
+      top: auto;
+      transform: none;
+      max-width: 100%;
+      margin: 1.5rem auto 0;
+      text-align: center;
+      white-space: normal;
+    }
+
+    .section-panel {
+      min-height: 60vh;
+      padding: 4rem 1.5rem;
+    }
+
+    .case-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__scroll-arrow {
+      animation: none;
+    }
+  }
+</style>

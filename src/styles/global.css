@@ -1,0 +1,261 @@
+/* ============================================================
+   Crescent Moon Design — Design Tokens & Global Styles
+   ============================================================ */
+
+/* ---------- Design Tokens ---------- */
+:root {
+  /* Colors — Brand */
+  --bg: #050508;
+  --bg-solid: #0b0b12;
+  --fg: #f0ece2;
+  --accent: #c9b99a;
+  --muted: #7a7585;
+  --glow: rgba(201, 185, 154, 0.12);
+  --red: #e63946;
+  --blue: #2ec4b6;
+
+  /* Semantic */
+  --surface: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.15);
+
+  /* Typography */
+  --font-sans: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 5rem;
+
+  /* Layout */
+  --max-w: 1100px;
+  --max-w-narrow: 760px;
+  --border-radius: 12px;
+  --border-radius-pill: 40px;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 4vw, 2.5rem); }
+h3 { font-size: clamp(1.2rem, 3vw, 1.6rem); }
+h4 { font-size: 1.1rem; }
+
+p {
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+
+p strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+/* ---------- Utility Classes ---------- */
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.wrap--narrow {
+  max-width: var(--max-w-narrow);
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.section--alt {
+  background: var(--bg-solid);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 13px 32px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: var(--border-radius-pill);
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(1.04);
+  opacity: 0.9;
+}
+
+.btn--primary {
+  background: var(--red);
+  color: #fff;
+  border: none;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border);
+}
+
+.btn--ghost:hover {
+  border-color: var(--border-hover);
+}
+
+/* ---------- Card ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: 2rem 1.5rem;
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+}
+
+/* ---------- Tags ---------- */
+.tag {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--red);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 700px) {
+  .wrap {
+    padding: 0 1.25rem;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+}
+
+/* ---------- Accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Prose (for markdown content) ---------- */
+.prose {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.prose h2 {
+  margin: 2.5rem 0 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+}
+
+.prose ul {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose ul li {
+  padding: 0.6rem 0;
+  position: relative;
+  color: var(--muted);
+  font-size: 0.95rem;
+  list-style: none;
+}
+
+.prose ul li::before {
+  content: '—';
+  position: absolute;
+  left: -1.5rem;
+  color: var(--red);
+  font-weight: 700;
+}
+
+.prose strong {
+  color: var(--fg);
+  font-weight: 600;
+}

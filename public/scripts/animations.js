@@ -8,7 +8,7 @@
     return;
   }
 
-  // Timeout — if GSAP hasn't loaded in 3s, do nothing
+  // Timeout — if GSAP hasn't loaded in 3s, do nothing (static content visible)
   const timeout = setTimeout(() => {
     console.warn('[CMDesign] GSAP timed out — showing static content');
   }, 3000);
@@ -21,7 +21,7 @@
 
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    // Phase 1: Moon entrance
+    // Phase 1: Moon entrance - fade in and scale up
     tl.fromTo('.hero__moon-svg',
       { scale: 0.9, opacity: 0 },
       { scale: 1, opacity: 1, duration: 1.2, ease: 'power2.out' }
@@ -29,10 +29,9 @@
     tl.to('.hero__moon-glow', { opacity: 1, duration: 0.8, ease: 'sine.inOut' }, '-=0.4');
     tl.to({}, { duration: 0.5 });
 
-    // Phase 2: Eclipse + text reveal
+    // Phase 2: Text reveal
     const sweepDur = 2.4;
     const sweepEase = 'power2.inOut';
-    tl.to('.eclipse-shadow', { attr: { cx: 288 }, duration: sweepDur, ease: sweepEase });
     tl.to('.hero__text', { opacity: 1, duration: sweepDur, ease: sweepEase }, '<');
     tl.to('.hero__moon-glow', { opacity: 0.3, duration: sweepDur, ease: 'sine.in' }, '<');
 

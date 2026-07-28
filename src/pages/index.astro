@@ -12,17 +12,9 @@ const featured = cases.filter(c => c.data.featured);
     <div class="hero__moon-container">
       <div class="hero__moon-glow"></div>
       <svg class="hero__moon-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <mask id="eclipse-mask">
-            <rect width="400" height="400" fill="black"/>
-            <circle cx="200" cy="200" r="185" fill="white"/>
-            <circle class="eclipse-shadow" cx="620" cy="200" r="130" fill="black"/>
-          </mask>
-        </defs>
         <image class="moon-img" href="/Crescent-Moon-Design/moon.webp"
                x="15" y="15" width="370" height="370"
-               preserveAspectRatio="xMidYMid slice"
-               mask="url(#eclipse-mask)"/>
+               preserveAspectRatio="xMidYMid slice"/>
       </svg>
 
       <div class="hero__text">

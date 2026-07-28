@@ -27,15 +27,20 @@
       { scale: 1, opacity: 1, duration: 1.2, ease: 'power2.out' }
     );
     tl.to('.hero__moon-glow', { opacity: 1, duration: 0.8, ease: 'sine.inOut' }, '-=0.4');
-    tl.to({}, { duration: 0.5 });
+    tl.to({}, { duration: 0.5 }); // pause
 
-    // Phase 2: Text reveal
+    // Phase 2: Eclipse sweep + text reveal
     const sweepDur = 2.4;
     const sweepEase = 'power2.inOut';
+
+    // Eclipse shadow sweeps from left (-80) to right (288) across the moon
+    tl.to('.eclipse-shadow', { attr: { cx: 288 }, duration: sweepDur, ease: sweepEase });
+    // Text fades in simultaneously
     tl.to('.hero__text', { opacity: 1, duration: sweepDur, ease: sweepEase }, '<');
+    // Glow dims during eclipse
     tl.to('.hero__moon-glow', { opacity: 0.3, duration: sweepDur, ease: 'sine.in' }, '<');
 
-    // Phase 3: Scroll — moon scales down
+    // Phase 3: Scroll — moon scales down and moves to top-left
     gsap.to('.hero__moon-container', {
       scrollTrigger: {
         trigger: '.hero',
@@ -71,7 +76,6 @@
   if (typeof gsap !== 'undefined') {
     tryInit();
   } else {
-    // Poll until GSAP loads or timeout fires
     const checkInterval = setInterval(() => {
       if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         clearInterval(checkInterval);

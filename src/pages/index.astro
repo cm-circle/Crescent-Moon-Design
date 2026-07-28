@@ -148,6 +148,7 @@ const featured = cases.filter(c => c.data.featured);
     width: 100%;
     height: 100%;
     display: block;
+    opacity: 0;
   }
 
   .hero__moon-glow {
@@ -168,6 +169,7 @@ const featured = cases.filter(c => c.data.featured);
     text-align: left;
     overflow: visible;
     white-space: nowrap;
+    opacity: 0;
   }
 
   .hero__title {
@@ -407,6 +409,13 @@ const featured = cases.filter(c => c.data.featured);
   @media (prefers-reduced-motion: reduce) {
     .hero__scroll-arrow {
       animation: none;
+    }
+
+    .hero__moon-svg,
+    .hero__moon-glow,
+    .hero__text {
+      opacity: 1 !important;
+      transform: none !important;
     }
   }
 </style>

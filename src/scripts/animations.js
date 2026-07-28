@@ -5,7 +5,7 @@ export function initAnimations() {
   // Bail if user prefers reduced motion
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     // Show all elements immediately for reduced motion users
-    document.querySelectorAll('.hero__cta, .hero__text').forEach(el => {
+    document.querySelectorAll('.hero__text').forEach(el => {
       el.style.opacity = '1';
       el.style.transform = 'none';
     });
@@ -15,7 +15,7 @@ export function initAnimations() {
   // Wait for GSAP to load
   if (typeof gsap === 'undefined') {
     // Fallback: show elements without animation
-    document.querySelectorAll('.hero__cta, .hero__text').forEach(el => {
+    document.querySelectorAll('.hero__text').forEach(el => {
       el.style.opacity = '1';
       el.style.transform = 'none';
     });
@@ -48,10 +48,7 @@ export function initAnimations() {
     opacity: 0.3, duration: sweepDur, ease: 'sine.in'
   }, '<');
 
-  // Phase 3: CTA fade in
-  tl.to('.hero__cta', { opacity: 1, duration: 0.6, ease: 'power2.out' });
-
-  // Phase 4: Scroll — moon scales down
+  // Phase 3: Scroll — moon scales down
   gsap.to('.hero__moon-container', {
     scrollTrigger: {
       trigger: '.hero',

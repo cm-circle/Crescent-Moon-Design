@@ -19,7 +19,7 @@ const featured = cases.filter(c => c.data.featured);
             <circle class="eclipse-shadow" cx="620" cy="200" r="130" fill="black"/>
           </mask>
         </defs>
-        <image class="moon-img" href="/moon.webp"
+        <image class="moon-img" href="/Crescent-Moon-Design/moon.webp"
                x="15" y="15" width="370" height="370"
                preserveAspectRatio="xMidYMid slice"
                mask="url(#eclipse-mask)"/>
@@ -116,12 +116,12 @@ const featured = cases.filter(c => c.data.featured);
     min-height: 100vh;
     padding-top: 12vh;
     overflow: hidden;
-    background: var(--bg) url('/nightsky.webp') center center / cover no-repeat fixed;
+    background: var(--bg) url('/Crescent-Moon-Design/nightsky.webp') center center / cover no-repeat fixed;
   }
 
-  @supports not (background: url('/nightsky.webp')) {
+  @supports not (background: url('/Crescent-Moon-Design/nightsky.webp')) {
     .hero {
-      background: var(--bg) url('/nightsky.jpg') center center / cover no-repeat fixed;
+      background: var(--bg) url('/Crescent-Moon-Design/nightsky.jpg') center center / cover no-repeat fixed;
     }
   }
 

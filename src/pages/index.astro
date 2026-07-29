@@ -7,28 +7,51 @@ const featured = cases.filter(c => c.data.featured);
 ---
 
 <BaseLayout title="Crescent Moon Design — We craft digital experiences that eclipse the ordinary.">
+  <!-- Docked moon logo (appears on scroll) -->
+  <div class="moon-dock">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+        <mask id="dock-mask">
+          <rect width="400" height="400" fill="black"/>
+          <circle cx="200" cy="200" r="185" fill="white"/>
+          <circle cx="288" cy="200" r="130" fill="black"/>
+        </mask>
+      </defs>
+      <image xlink:href="/Crescent-Moon-Design/moon.webp" x="15" y="15" width="370" height="370"
+             preserveAspectRatio="xMidYMid slice" mask="url(#dock-mask)"/>
+    </svg>
+  </div>
+
+  <!-- Island Navigation -->
+  <nav class="island-nav">
+    <div class="nav-indicator"></div>
+    <a class="nav-item active" href="#section-web">Web Design</a>
+    <a class="nav-item" href="#section-social">Social Media</a>
+    <a class="nav-item" href="#section-seo">SEO / GEO</a>
+  </nav>
+
   <!-- Hero -->
   <section class="hero">
     <div class="hero__moon-container">
       <div class="hero__moon-glow"></div>
-      <svg class="hero__moon-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                              <mask id="eclipse-mask">
-                                <rect width="400" height="400" fill="black"/>
-                                <circle cx="200" cy="200" r="185" fill="white"/>
-                                <circle class="eclipse-shadow" cx="620" cy="200" r="130" fill="black"/>
-                              </mask>
-                            </defs>
-        <image class="moon-img" href="/Crescent-Moon-Design/moon.webp"
+      <svg class="hero__moon-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+          <mask id="eclipse-mask">
+            <rect width="400" height="400" fill="black"/>
+            <circle cx="200" cy="200" r="185" fill="white"/>
+            <circle class="eclipse-shadow" cx="620" cy="200" r="130" fill="black"/>
+          </mask>
+        </defs>
+        <image class="moon-img" xlink:href="/Crescent-Moon-Design/moon.webp"
                x="15" y="15" width="370" height="370"
                preserveAspectRatio="xMidYMid slice"
                mask="url(#eclipse-mask)"/>
       </svg>
 
       <div class="hero__text">
-        <h1 class="hero__title">Crescent Moon Design</h1>
-        <p class="hero__tagline">We craft digital experiences that eclipse the ordinary</p>
-        <p class="hero__services">Web Design &bull; Social Media &bull; SEO / GEO</p>
+        <h1 class="hero__title agency-name">Crescent Moon Design</h1>
+        <p class="hero__tagline tagline">We craft digital experiences that eclipse the ordinary</p>
+        <p class="hero__services services-intro">Web Design &bull; Social Media &bull; SEO / GEO</p>
       </div>
     </div>
 
@@ -103,6 +126,8 @@ const featured = cases.filter(c => c.data.featured);
 
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script is:inline src="https://unpkg.com/split-type@0.3.4/umd/index.min.js" defer></script>
+
 <script is:inline>
 (function() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -111,33 +136,156 @@ const featured = cases.filter(c => c.data.featured);
   }
   var timeout = setTimeout(function() { console.warn('[CMDesign] GSAP timed out'); }, 3000);
   function tryInit() {
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof SplitType === 'undefined') return;
     clearTimeout(timeout);
     gsap.registerPlugin(ScrollTrigger);
+
     var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    tl.fromTo('.hero__moon-svg', { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: 'power2.out' });
+
+    // Phase 1: Moon entrance
+    tl.fromTo('.hero__moon-svg',
+      { scale: 0.9, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1.2, ease: 'power2.out' }
+    );
     tl.to('.hero__moon-glow', { opacity: 1, duration: 0.8, ease: 'sine.inOut' }, '-=0.4');
     tl.to({}, { duration: 0.5 });
-    var sweepDur = 2.4, sweepEase = 'power2.inOut';
-    tl.to('.eclipse-shadow', { attr: { cx: 288 }, duration: sweepDur, ease: sweepEase });
-    tl.fromTo('.hero__text', { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: sweepDur * 0.8, ease: sweepEase }, '-=0.6');
-    tl.to('.hero__moon-glow', { opacity: 0.3, duration: sweepDur, ease: 'sine.in' }, '<');
-    gsap.to('.hero__moon-container', {
-      scrollTrigger: { trigger: '.hero', start: '60% top', end: 'bottom top', scrub: 1 },
-      scale: 0.08, x: function() { return -window.innerWidth * 0.42; },
-      y: function() { return -window.innerHeight * 0.38; }, opacity: 0, ease: 'none'
+
+    // Phase 2: Eclipse + text sweep
+    var sweepDur = 2.4;
+    var sweepEase = 'power2.inOut';
+
+    tl.to('.eclipse-shadow', {
+      attr: { cx: 288 }, duration: sweepDur, ease: sweepEase
     });
+    tl.fromTo('.hero__text',
+      { opacity: 0, x: 60 },
+      { opacity: 1, x: 0, duration: sweepDur * 0.8, ease: sweepEase },
+      '-=0.6'
+    );
+    tl.to('.hero__moon-glow', { opacity: 0.3, duration: sweepDur, ease: 'sine.in' }, '<');
+
+    // Phase 3: Character settle with SplitType
+    var nameSplit = new SplitType('.agency-name', { types: 'chars' });
+    var taglineSplit = new SplitType('.tagline', { types: 'words' });
+    var introSplit = new SplitType('.services-intro', { types: 'chars' });
+
+    tl.to('.hero__moon-glow', { opacity: 0.7, scale: 1.06, duration: 0.5, ease: 'power2.out' });
+    tl.to('.hero__moon-glow', { opacity: 0.4, scale: 1, duration: 0.9, ease: 'sine.inOut' });
+
+    tl.to(nameSplit.chars, {
+      opacity: 1, x: 0, duration: 0.55, stagger: 0.028, ease: 'power3.out'
+    }, '-=1.1');
+    tl.to(taglineSplit.words, {
+      opacity: 1, x: 0, duration: 0.45, stagger: 0.05, ease: 'power3.out'
+    }, '-=0.7');
+    tl.to(introSplit.chars, {
+      opacity: 1, x: 0, duration: 0.35, stagger: 0.012, ease: 'power2.out'
+    }, '-=0.4');
+
+    // Phase 4: Scroll — moon docks to top-left
+    gsap.to('.hero__moon-container', {
+      scrollTrigger: {
+        trigger: '.hero',
+        start: '60% top',
+        end: 'bottom top',
+        scrub: 1
+      },
+      scale: 0.08,
+      x: function() { return -window.innerWidth * 0.42; },
+      y: function() { return -window.innerHeight * 0.38; },
+      opacity: 0,
+      ease: 'none'
+    });
+
+    // Docked moon fades in
+    gsap.to('.moon-dock', {
+      scrollTrigger: {
+        trigger: '.hero',
+        start: '75% top',
+        end: 'bottom top',
+        scrub: 1
+      },
+      opacity: 1,
+      scale: 1,
+      ease: 'none'
+    });
+
+    // Phase 5: Island nav slides in
+    gsap.to('.island-nav', {
+      scrollTrigger: {
+        trigger: '.hero',
+        start: '70% top',
+        end: '90% top',
+        scrub: 1
+      },
+      y: 0,
+      opacity: 1,
+      ease: 'none'
+    });
+
+    // Phase 6: Section reveals
     gsap.utils.toArray('.section-panel').forEach(function(panel) {
-      gsap.fromTo(panel, { opacity: 0.2, y: 60 }, {
-        opacity: 1, y: 0, duration: 1, ease: 'power2.out',
-        scrollTrigger: { trigger: panel, start: 'top 75%', end: 'top 30%', scrub: 1 }
+      gsap.fromTo(panel,
+        { opacity: 0.2, y: 60 },
+        {
+          opacity: 1, y: 0, duration: 1, ease: 'power2.out',
+          scrollTrigger: {
+            trigger: panel,
+            start: 'top 75%',
+            end: 'top 30%',
+            scrub: 1
+          }
+        }
+      );
+    });
+
+    // Phase 7: Red indicator scroll-spy
+    var navItems = document.querySelectorAll('.island-nav .nav-item');
+    var indicator = document.querySelector('.nav-indicator');
+    var sections = document.querySelectorAll('.section-panel');
+
+    function moveIndicator(el) {
+      gsap.to(indicator, {
+        x: el.offsetLeft,
+        width: el.offsetWidth,
+        duration: 0.4,
+        ease: 'power3.out'
+      });
+    }
+
+    moveIndicator(navItems[0]);
+
+    sections.forEach(function(section, i) {
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top center',
+        end: 'bottom center',
+        onEnter: function() {
+          navItems.forEach(function(n) { n.classList.remove('active'); });
+          navItems[i].classList.add('active');
+          moveIndicator(navItems[i]);
+        },
+        onEnterBack: function() {
+          navItems.forEach(function(n) { n.classList.remove('active'); });
+          navItems[i].classList.add('active');
+          moveIndicator(navItems[i]);
+        }
+      });
+    });
+
+    // Smooth scroll on nav click
+    navItems.forEach(function(item) {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(item.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
     });
   }
   if (typeof gsap !== 'undefined') { tryInit(); }
   else {
     var iv = setInterval(function() {
-      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && typeof SplitType !== 'undefined') {
         clearInterval(iv); tryInit();
       }
     }, 100);
@@ -233,11 +381,83 @@ const featured = cases.filter(c => c.data.featured);
   }
 
   .hero__services {
-    font-size: clamp(0.98rem, 1.5vw, 1.2rem);
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-  }
+      font-size: clamp(0.98rem, 1.5vw, 1.2rem);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    /* --- Docked moon (top-left corner logo) --- */
+    .moon-dock {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      width: 52px;
+      height: 52px;
+      z-index: 100;
+      opacity: 0;
+      transform: scale(0.5);
+      pointer-events: none;
+    }
+
+    .moon-dock svg { width: 100%; height: 100%; }
+
+    /* --- Island Navigation --- */
+    .island-nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-80px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: rgba(10, 10, 18, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 40px;
+      padding: 6px 8px;
+      opacity: 0;
+    }
+
+    .island-nav .nav-item {
+      position: relative;
+      padding: 10px 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .island-nav .nav-item.active {
+      color: var(--fg);
+    }
+
+    /* Red sliding indicator */
+    .nav-indicator {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      height: calc(100% - 12px);
+      transform: translateY(-50%);
+      background: rgba(230, 57, 70, 0.15);
+      border: 1px solid var(--red);
+      border-radius: 30px;
+      transition: none;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* --- SplitType character animations --- */
+    .agency-name .char { display: inline-block; opacity: 0; transform: translateX(30px); }
+    .tagline .word { display: inline-block; opacity: 0; transform: translateX(24px); }
+    .services-intro .char { display: inline-block; opacity: 0; transform: translateX(16px); }
 
   .hero__scroll-cue {
     position: absolute;
@@ -449,15 +669,24 @@ const featured = cases.filter(c => c.data.featured);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero__scroll-arrow {
-      animation: none;
-    }
+      .hero__scroll-arrow {
+        animation: none;
+      }
 
-    .hero__moon-svg,
-    .hero__moon-glow,
-    .hero__text {
-      opacity: 1 !important;
-      transform: none !important;
+      .hero__moon-svg,
+      .hero__moon-glow,
+      .hero__text,
+      .moon-dock,
+      .island-nav {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .agency-name .char,
+      .tagline .word,
+      .services-intro .char {
+        opacity: 1 !important;
+        transform: none !important;
+      }
     }
-  }
-</style>
+  </style>

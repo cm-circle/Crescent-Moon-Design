@@ -13,12 +13,12 @@ const featured = cases.filter(c => c.data.featured);
       <div class="hero__moon-glow"></div>
       <svg class="hero__moon-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <mask id="eclipse-mask">
-                  <rect width="400" height="400" fill="black"/>
-                  <circle cx="200" cy="200" r="185" fill="white"/>
-                  <circle class="eclipse-shadow" cx="-130" cy="200" r="185" fill="black"/>
-                </mask>
-              </defs>
+                              <mask id="eclipse-mask">
+                                <rect width="400" height="400" fill="black"/>
+                                <circle cx="200" cy="200" r="185" fill="white"/>
+                                <circle class="eclipse-shadow" cx="620" cy="200" r="130" fill="black"/>
+                              </mask>
+                            </defs>
         <image class="moon-img" href="/Crescent-Moon-Design/moon.webp"
                x="15" y="15" width="370" height="370"
                preserveAspectRatio="xMidYMid slice"
@@ -119,7 +119,7 @@ const featured = cases.filter(c => c.data.featured);
     tl.to('.hero__moon-glow', { opacity: 1, duration: 0.8, ease: 'sine.inOut' }, '-=0.4');
     tl.to({}, { duration: 0.5 });
     var sweepDur = 2.4, sweepEase = 'power2.inOut';
-    tl.to('.eclipse-shadow', { attr: { cx: 200 }, duration: sweepDur, ease: sweepEase });
+    tl.to('.eclipse-shadow', { attr: { cx: 288 }, duration: sweepDur, ease: sweepEase });
     tl.fromTo('.hero__text', { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: sweepDur * 0.8, ease: sweepEase }, '-=0.6');
     tl.to('.hero__moon-glow', { opacity: 0.3, duration: sweepDur, ease: 'sine.in' }, '<');
     gsap.to('.hero__moon-container', {

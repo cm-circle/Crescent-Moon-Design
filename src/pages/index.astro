@@ -120,7 +120,7 @@ const featured = cases.filter(c => c.data.featured);
     tl.to({}, { duration: 0.5 });
     var sweepDur = 2.4, sweepEase = 'power2.inOut';
     tl.to('.eclipse-shadow', { attr: { cx: 200 }, duration: sweepDur, ease: sweepEase });
-    tl.fromTo('.hero__text', { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: sweepDur * 0.8, ease: sweepEase }, '-=0.6');
+    tl.fromTo('.hero__text', { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: sweepDur * 0.8, ease: sweepEase }, '-=0.6');
     tl.to('.hero__moon-glow', { opacity: 0.3, duration: sweepDur, ease: 'sine.in' }, '<');
     gsap.to('.hero__moon-container', {
       scrollTrigger: { trigger: '.hero', start: '60% top', end: 'bottom top', scrub: 1 },
@@ -207,7 +207,7 @@ const featured = cases.filter(c => c.data.featured);
       z-index: 2;
       left: 48%;
       top: 50%;
-      transform: translateY(-50%) translateX(-60px);
+      transform: translateY(-50%) translateX(60px);
       opacity: 0;
       text-align: left;
       overflow: visible;

@@ -103,7 +103,47 @@ const featured = cases.filter(c => c.data.featured);
 
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script is:inline src="/scripts/animations.js" defer></script>
+<script is:inline>
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('reduced-motion');
+    return;
+  }
+  var timeout = setTimeout(function() { console.warn('[CMDesign] GSAP timed out'); }, 3000);
+  function tryInit() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    clearTimeout(timeout);
+    gsap.registerPlugin(ScrollTrigger);
+    var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.fromTo('.hero__moon-svg', { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: 'power2.out' });
+    tl.to('.hero__moon-glow', { opacity: 1, duration: 0.8, ease: 'sine.inOut' }, '-=0.4');
+    tl.to({}, { duration: 0.5 });
+    var sweepDur = 2.4, sweepEase = 'power2.inOut';
+    tl.to('.eclipse-shadow', { attr: { cx: 200 }, duration: sweepDur, ease: sweepEase });
+    tl.fromTo('.hero__text', { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: sweepDur * 0.8, ease: sweepEase }, '-=0.6');
+    tl.to('.hero__moon-glow', { opacity: 0.3, duration: sweepDur, ease: 'sine.in' }, '<');
+    gsap.to('.hero__moon-container', {
+      scrollTrigger: { trigger: '.hero', start: '60% top', end: 'bottom top', scrub: 1 },
+      scale: 0.08, x: function() { return -window.innerWidth * 0.42; },
+      y: function() { return -window.innerHeight * 0.38; }, opacity: 0, ease: 'none'
+    });
+    gsap.utils.toArray('.section-panel').forEach(function(panel) {
+      gsap.fromTo(panel, { opacity: 0.2, y: 60 }, {
+        opacity: 1, y: 0, duration: 1, ease: 'power2.out',
+        scrollTrigger: { trigger: panel, start: 'top 75%', end: 'top 30%', scrub: 1 }
+      });
+    });
+  }
+  if (typeof gsap !== 'undefined') { tryInit(); }
+  else {
+    var iv = setInterval(function() {
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        clearInterval(iv); tryInit();
+      }
+    }, 100);
+  }
+})();
+</script>
 
 <style>
   /* --- Hero --- */

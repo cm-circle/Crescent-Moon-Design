@@ -12,12 +12,13 @@ const featured = cases.filter(c => c.data.featured);
     <div class="hero__moon-container">
       <div class="hero__moon-glow"></div>
       <svg class="hero__moon-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <mask id="eclipse-mask">
-            <rect width="400" height="400" fill="white"/>
-            <circle class="eclipse-shadow" cx="-130" cy="200" r="185" fill="black"/>
-          </mask>
-        </defs>
+              <defs>
+                <mask id="eclipse-mask">
+                  <rect width="400" height="400" fill="black"/>
+                  <circle cx="200" cy="200" r="185" fill="white"/>
+                  <circle class="eclipse-shadow" cx="-130" cy="200" r="185" fill="black"/>
+                </mask>
+              </defs>
         <image class="moon-img" href="/Crescent-Moon-Design/moon.webp"
                x="15" y="15" width="370" height="370"
                preserveAspectRatio="xMidYMid slice"
@@ -100,10 +101,9 @@ const featured = cases.filter(c => c.data.featured);
   </section>
 </BaseLayout>
 
-<!-- GSAP animations — loaded async, deferred -->
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script is:inline src="/scripts/animations.js"></script>
+<script is:inline src="/scripts/animations.js" defer></script>
 
 <style>
   /* --- Hero --- */
@@ -163,15 +163,16 @@ const featured = cases.filter(c => c.data.featured);
   }
 
   .hero__text {
-    position: absolute;
-    z-index: 2;
-    left: 48%;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: left;
-    overflow: visible;
-    white-space: nowrap;
-  }
+      position: absolute;
+      z-index: 2;
+      left: 48%;
+      top: 50%;
+      transform: translateY(-50%) translateX(-60px);
+      opacity: 0;
+      text-align: left;
+      overflow: visible;
+      white-space: nowrap;
+    }
 
   .hero__title {
     font-size: clamp(2.7rem, 4.8vw, 4.5rem);

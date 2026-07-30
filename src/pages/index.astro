@@ -14,13 +14,11 @@ const featured = cases.filter(c => c.data.featured);
         <mask id="dock-mask">
           <rect width="400" height="400" fill="black"/>
           <circle cx="200" cy="200" r="185" fill="white"/>
-          <circle cx="112" cy="200" r="130" fill="black"/>
+          <circle cx="288" cy="200" r="130" fill="black"/>
         </mask>
       </defs>
-      <g transform="translate(400, 0) scale(-1, 1)">
-        <image xlink:href="/Crescent-Moon-Design/moon.webp" x="15" y="15" width="370" height="370"
-               preserveAspectRatio="xMidYMid slice" mask="url(#dock-mask)"/>
-      </g>
+      <image xlink:href="/Crescent-Moon-Design/moon.webp" x="15" y="15" width="370" height="370"
+             preserveAspectRatio="xMidYMid slice" mask="url(#dock-mask)"/>
     </svg>
   </div>
 
@@ -48,8 +46,7 @@ const featured = cases.filter(c => c.data.featured);
         <image class="moon-img" xlink:href="/Crescent-Moon-Design/moon.webp"
                x="15" y="15" width="370" height="370"
                preserveAspectRatio="xMidYMid slice"
-               mask="url(#eclipse-mask)"
-               transform="translate(400, 0) scale(-1, 1)"/>
+               mask="url(#eclipse-mask)"/>
       </svg>
 
       <div class="hero__text">

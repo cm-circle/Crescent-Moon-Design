@@ -3,11 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const cases = await getCollection('caseStudies');
-const featured = cases.filter(c => c.data.featured);
 ---
 
 <BaseLayout title="Crescent Moon Design — We craft digital experiences that eclipse the ordinary.">
-  <!-- Docked moon logo (appears on scroll) -->
+
+  <!-- Docked moon logo -->
   <div class="moon-dock">
     <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
@@ -22,16 +22,7 @@ const featured = cases.filter(c => c.data.featured);
     </svg>
   </div>
 
-  <!-- Island Navigation -->
-    <nav class="island-nav">
-      <div class="nav-indicator"></div>
-      <a class="nav-item active" href="#section-web">Web Design</a>
-      <a class="nav-item" href="#section-social">Social Media</a>
-      <a class="nav-item" href="#section-seo">SEO / GEO</a>
-      <a class="nav-item" href="#section-cases">Case Studies</a>
-    </nav>
-
-    <!-- Hero -->
+  <!-- Hero -->
   <section class="hero">
     <div class="hero__moon-container">
       <div class="hero__moon-glow"></div>
@@ -48,106 +39,297 @@ const featured = cases.filter(c => c.data.featured);
                preserveAspectRatio="xMidYMid slice"
                mask="url(#eclipse-mask)"/>
       </svg>
-
-      <div class="hero__text">
-        <h1 class="hero__title agency-name">Crescent Moon Design</h1>
-        <p class="hero__tagline tagline">We craft digital experiences that eclipse the ordinary</p>
-        <p class="hero__services services-intro">Web Design &bull; Social Media &bull; SEO / GEO</p>
-      </div>
     </div>
-
+    <div class="hero__text">
+      <h1 class="hero__title agency-name">Crescent Moon Design</h1>
+      <p class="hero__tagline tagline">We craft digital experiences that eclipse the ordinary</p>
+      <p class="hero__services services-intro">Web Design &bull; Social Media &bull; SEO / GEO</p>
+    </div>
     <div class="hero__scroll-cue">
       <span class="hero__scroll-text">Scroll</span>
       <span class="hero__scroll-arrow">↓</span>
     </div>
   </section>
 
-  <!-- Services -->
-  <section class="section-panel" id="section-web" style="background:#0f0f19d9;border:3px solid #e63946;border-radius:16px;padding:6rem 2rem;margin:0 auto 2rem;max-width:900px;text-align:center;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-        <span class="tag">01 — Web Design</span>
-        <h2>Sites that pull their weight</h2>
-        <p>High-performance, responsive builds engineered for speed and story. We design and develop sites that convert visitors into believers — accessible, fast, and unmistakably yours.</p>
-        <ul style="list-style:none;padding:0;margin-top:2rem;max-width:640px;text-align:left;display:inline-block;">
-          <li style="padding:0.6rem 0;color:#f0ece2;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem;">✦ Custom responsive design — no templates, no shortcuts</li>
-          <li style="padding:0.6rem 0;color:#f0ece2;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem;">✦ Lightning-fast load times — sub-second first paint</li>
-          <li style="padding:0.6rem 0;color:#f0ece2;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem;">✦ Mobile-first architecture — every screen, every thumb</li>
-          <li style="padding:0.6rem 0;color:#f0ece2;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem;">✦ Accessible to all — WCAG 2.1 AA compliance built in</li>
-          <li style="padding:0.6rem 0;color:#f0ece2;font-size:0.95rem;">✦ Conversion-focused — every element has a job to do</li>
-        </ul>
-      </section>
+  <!-- Island Navigation -->
+  <nav class="island-nav">
+    <div class="nav-indicator"></div>
+    <a class="nav-item active" href="#detail-web">Web Design</a>
+    <a class="nav-item" href="#detail-social">Social Media</a>
+    <a class="nav-item" href="#detail-seo">SEO / GEO</a>
+    <a class="nav-item" href="#section-cases">Case Studies</a>
+  </nav>
 
-      <section class="section-panel" id="section-social" style="background:#0f0f19d9;border:3px solid #e63946;border-radius:16px;padding:6rem 2rem;margin:0 auto 2rem;max-width:900px;text-align:center;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-        <span class="tag">02 — Social Media</span>
-        <h2>Content with gravitational pull</h2>
-        <p>Strategy, calendars, and creative that keep your audience in orbit. We build presence across platforms with consistent voice, visual identity, and measurable growth.</p>
-        <ul style="list-style:none;padding:0;margin-top:2rem;max-width:640px;text-align:left;display:inline-block;">
-          <li style="padding:0.6rem 0;color:#f0ece2;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem;">✦ Platform-native content — optimized for each channel's algorithm</li>
-          <li style="padding:0.6rem 0;color:#f0ece2;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem;">✦ Monthly content calendars — consistent posting, zero stress</li>
-          <li style="padding:0.6rem 0;color:#f0ece2;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem;">✦ Brand voice development — find your tone, keep it</li>
-          <li style="padding:0.6rem 0;color:#f0ece2;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem;">✦ Community management — engagement that builds loyalty</li>
-          <li style="padding:0.6rem 0;color:#f0ece2;font-size:0.95rem;">✦ Analytics & reporting — know what's working, kill what isn't</li>
-        </ul>
-      </section>
-
-      <section class="section-panel" id="section-seo" style="background:#0f0f19d9;border:3px solid #e63946;border-radius:16px;padding:6rem 2rem;margin:0 auto 2rem;max-width:900px;text-align:center;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-        <span class="tag">03 — SEO / GEO</span>
-        <h2>Found by the right people</h2>
-        <p>Search and generative engine optimization that maps the trajectory from first query to lasting loyalty. Technical audits, content architecture, and local visibility.</p>
-        <ul style="list-style:none;padding:0;margin-top:2rem;max-width:640px;text-align:left;display:inline-block;">
-          <li style="padding:0.6rem 0;color:#f0ece2;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem;">✦ Technical SEO audits — find and fix what's blocking you</li>
-          <li style="padding:0.6rem 0;color:#f0ece2;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem;">✦ Content architecture — structure that search engines reward</li>
-          <li style="padding:0.6rem 0;color:#f0ece2;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem;">✦ Local SEO & Google Business Profile — dominate your zip code</li>
-          <li style="padding:0.6rem 0;color:#f0ece2;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.95rem;">✦ Generative Engine Optimization (GEO) — optimized for AI answers</li>
-          <li style="padding:0.6rem 0;color:#f0ece2;font-size:0.95rem;">✦ Link building & authority — earn the trust search engines measure</li>
-        </ul>
-      </section>
-
-  <!-- Case Studies Preview -->
-    <section class="section section--alt" id="section-cases">
-    <div class="wrap">
-      <span class="tag">Our Work</span>
-      <h2>Case Studies</h2>
-      <p class="section-intro">
-        Real results for real businesses. Each project is a story of finding what's broken, fixing it properly, and measuring what happened.
-      </p>
-      <div class="case-grid">
-        {cases.map(c => (
-          <a href={`/case-studies/${c.id}`} class="case-card">
-            <span class="case-card__category">{c.data.category}</span>
-            <h3 class="case-card__title">{c.data.title}</h3>
-            <p class="case-card__tagline">{c.data.tagline}</p>
-            <div class="case-card__stats">
-              {c.data.stats.slice(0, 2).map(stat => (
-                <div class="case-card__stat">
-                  <span class="case-card__stat-value">{stat.value}</span>
-                  <span class="case-card__stat-label">{stat.label}</span>
+  <!-- Service Detail Rail -->
+  <section class="service-detail active" id="detail-web">
+    <div class="service-detail__inner">
+      <div class="service-detail__visual">
+        <div class="browser-frame">
+          <div class="browser-bar"><span></span><span></span><span></span></div>
+          <div class="browser-content">
+            <div class="site-preview">
+              <div class="site-preview__sidebar"></div>
+              <div class="site-preview__main">
+                <div class="site-preview__hero-img"></div>
+                <div class="site-preview__line w-60"></div>
+                <div class="site-preview__line w-80"></div>
+                <div class="site-preview__line w-40"></div>
+                <div class="site-preview__grid">
+                  <div class="site-preview__card"></div>
+                  <div class="site-preview__card"></div>
+                  <div class="site-preview__card"></div>
                 </div>
-              ))}
+              </div>
             </div>
-            <span class="case-card__link">Read Case Study →</span>
-          </a>
-        ))}
+          </div>
+        </div>
+        <p class="service-detail__flow">Strategy → Structure → Design → Build → Improve</p>
+      </div>
+      <div class="service-detail__content">
+        <div class="service-detail__number">01</div>
+        <h2>Web Design</h2>
+        <p class="service-detail__tagline">Sites that pull their weight</p>
+        <ul class="service-detail__list">
+          <li>✦ <strong>Clear offer</strong> — every page has a job and does it</li>
+          <li>✦ <strong>Mobile-first</strong> — built for thumbs first, cursors second</li>
+          <li>✦ <strong>Fast pages</strong> — sub-second first paint, no excuses</li>
+          <li>✦ <strong>Easy edits</strong> — you own your content, not a plugin</li>
+          <li>✦ <strong>Accessible</strong> — WCAG 2.1 AA, built in from the start</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- Automation Callout -->
-  <section class="section automation-callout" id="contact">
-    <div class="wrap">
-      <div class="automation-inner">
-        <span class="tag">New Service</span>
-        <h2>AI Automation for Back-Office Tasks</h2>
-        <p>Custom code that handles repetitive admin work — invoice chasing, data re-entry, compliance logging. Fixed price, no subscriptions.</p>
-        <a href="/services/automation" class="btn btn--ghost">Learn More →</a>
+  <section class="service-detail" id="detail-social">
+    <div class="service-detail__inner">
+      <div class="service-detail__visual">
+        <div class="browser-frame">
+          <div class="browser-bar"><span></span><span></span><span></span></div>
+          <div class="browser-content">
+            <div class="social-preview">
+              <div class="social-preview__grid">
+                <div class="social-preview__post"></div>
+                <div class="social-preview__post"></div>
+                <div class="social-preview__post"></div>
+                <div class="social-preview__post"></div>
+              </div>
+              <div class="social-preview__stat">
+                <div class="social-preview__stat-circle">
+                  <span>+520%</span>
+                  <small>engagement</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="service-detail__flow">Audit → Voice → Calendar → Create → Measure</p>
+      </div>
+      <div class="service-detail__content">
+        <div class="service-detail__number">02</div>
+        <h2>Social Media</h2>
+        <p class="service-detail__tagline">Content with gravitational pull</p>
+        <ul class="service-detail__list">
+          <li>✦ <strong>Platform-native</strong> — each channel gets what it needs</li>
+          <li>✦ <strong>Monthly calendars</strong> — consistent, zero panic posting</li>
+          <li>✦ <strong>Brand voice</strong> — defined once, used everywhere</li>
+          <li>✦ <strong>Community</strong> — engagement that builds loyalty</li>
+          <li>✦ <strong>Reporting</strong> — know what's working, kill what isn't</li>
+        </ul>
       </div>
     </div>
   </section>
+
+  <section class="service-detail" id="detail-seo">
+    <div class="service-detail__inner">
+      <div class="service-detail__visual">
+        <div class="browser-frame">
+          <div class="browser-bar"><span></span><span></span><span></span></div>
+          <div class="browser-content">
+            <div class="seo-preview">
+              <div class="seo-preview__chart">
+                <div class="seo-preview__bar" style="height:30%"></div>
+                <div class="seo-preview__bar" style="height:50%"></div>
+                <div class="seo-preview__bar" style="height:70%"></div>
+                <div class="seo-preview__bar seo-preview__bar--highlight" style="height:95%"></div>
+              </div>
+              <div class="seo-preview__badges">
+                <span class="seo-preview__badge">#1 Local Pack</span>
+                <span class="seo-preview__badge">+340% Traffic</span>
+                <span class="seo-preview__badge">GEO Ready</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="service-detail__flow">Audit → Optimize → Publish → Authority → Grow</p>
+      </div>
+      <div class="service-detail__content">
+        <div class="service-detail__number">03</div>
+        <h2>SEO / GEO</h2>
+        <p class="service-detail__tagline">Found by the right people</p>
+        <ul class="service-detail__list">
+          <li>✦ <strong>Technical audits</strong> — find and fix what's blocking you</li>
+          <li>✦ <strong>Local SEO</strong> — dominate your zip code</li>
+          <li>✦ <strong>Content architecture</strong> — structure search engines reward</li>
+          <li>✦ <strong>GEO</strong> — optimized for AI answer engines</li>
+          <li>✦ <strong>Link building</strong> — earn the trust that rankings measure</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section class="section section--cases" id="section-cases">
+    <div class="wrap">
+      <div class="section__header">
+        <div>
+          <span class="tag">Case Studies</span>
+          <h2>Work with a visible before/after,<br>a result, and context.</h2>
+        </div>
+        <span class="section__label">Work / 2026</span>
+      </div>
+
+      <div class="case-cards">
+        <div class="case-card case-card--tall">
+          <div class="case-card__visual case-card__visual--social">
+            <div class="social-card-art">
+              <div class="social-card-art__ring"></div>
+              <div class="social-card-art__ring social-card-art__ring--sm"></div>
+              <div class="social-card-art__stat">
+                <span class="social-card-art__num">+520%</span>
+                <span class="social-card-art__label">engagement</span>
+              </div>
+            </div>
+          </div>
+          <div class="case-card__body">
+            <span class="case-card__num">01 / Social</span>
+            <h3 class="case-card__title">Brookline Property Group</h3>
+            <p class="case-card__desc">Making local listings feel alive — and converting the people who see them.</p>
+            <div class="case-card__metrics"><span>38 leads / month</span></div>
+            <a href="/case-studies/brookline-property-group" class="case-card__link">VIEW THE FIELD NOTES →</a>
+          </div>
+        </div>
+
+        <div class="case-card case-card--tall">
+          <div class="case-card__visual case-card__visual--seo">
+            <div class="seo-card-art">
+              <div class="seo-card-art__map">
+                <div class="seo-card-art__pin"></div>
+                <div class="seo-card-art__pin seo-card-art__pin--2"></div>
+                <div class="seo-card-art__rays"></div>
+              </div>
+              <div class="seo-card-art__badges"><span>#1 Local</span><span>3 Towns</span></div>
+            </div>
+          </div>
+          <div class="case-card__body">
+            <span class="case-card__num">02 / SEO + GEO</span>
+            <h3 class="case-card__title">Harrison McPhee Arboriculture</h3>
+            <p class="case-card__desc">A 30-year tree company that didn't exist on the internet. Now they can't take on new customers.</p>
+            <div class="case-card__metrics"><span>+340% organic traffic</span></div>
+            <a href="/case-studies/harrison-mcphee-arboriculture" class="case-card__link">VIEW THE FIELD NOTES →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card case-card--full">
+        <div class="case-card__visual case-card__visual--web">
+          <div class="web-card-art">
+            <div class="web-card-art__device">
+              <div class="web-card-art__screen">
+                <div class="web-card-art__site-header"></div>
+                <div class="web-card-art__site-hero"></div>
+                <div class="web-card-art__site-body"></div>
+              </div>
+            </div>
+            <div class="web-card-art__badge">92 Lighthouse</div>
+          </div>
+        </div>
+        <div class="case-card__body case-card__body--web">
+          <span class="case-card__num">03 / Web Design</span>
+          <h3 class="case-card__title">Holliston Agricultural Commission</h3>
+          <p class="case-card__desc">A clearer digital front door for a working local business. Technically it existed before. Nobody could find it, use it, or read it on a phone.</p>
+          <div class="case-card__metrics"><span>+180% page views</span><span>92% mobile perf.</span></div>
+          <a href="/case-studies/holliston-agricultural-commission" class="case-card__link">VIEW THE SITE →</a>
+        </div>
+      </div>
+
+      <div class="cases-cta">
+        <a href="/case-studies" class="cases-cta__link">VIEW ALL WORK →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section section--process">
+    <div class="wrap">
+      <div class="section__header">
+        <div>
+          <span class="tag">Process</span>
+          <h2>How it works</h2>
+        </div>
+        <span class="section__label">04</span>
+      </div>
+      <div class="process-grid">
+        <div class="process-step">
+          <span class="process-step__num">01</span>
+          <h3>Find the friction</h3>
+          <p>Audit what exists. Map every dead end, every drop-off, every "good enough" that's costing you.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">02</span>
+          <h3>Make the plan</h3>
+          <p>Prioritize what matters — to your business, your users, your growth. Cut the rest.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">03</span>
+          <h3>Build the useful thing</h3>
+          <p>Design, write, ship. Every piece earns its place, every feature has a reason.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">04</span>
+          <h3>Measure and refine</h3>
+          <p>Learn from real behavior. Kill what flops. Double down on what works.</p>
+        </div>
+      </div>
+      <blockquote class="process-quote">
+        "No black box. You see what is changing, why it matters, and what comes next."
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Automation -->
+  <section class="section section--automation">
+    <div class="wrap">
+      <div class="automation-block">
+        <div class="automation-block__header">
+          <span class="tag">Practical Automation</span>
+          <h2>The back office can do more</h2>
+        </div>
+        <p>Automate repetitive admin work without losing human oversight. Fixed price, no subscriptions, no black box.</p>
+        <div class="automation-flow">
+          <span>intake</span><span class="flow-arrow">→</span><span>validate</span><span class="flow-arrow">→</span><span>action</span><span class="flow-arrow">→</span><span>exception queue</span>
+        </div>
+        <a href="/services/automation" class="btn btn--outline-teal">Explore Automation →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Primary CTA -->
+  <section class="section section--cta">
+    <div class="wrap">
+      <h2>Have a project that needs to pull its weight?</h2>
+      <p>Tell us what is not working. We will help map a useful next step.</p>
+      <div class="cta-footer">
+        <a href="mailto:hello@crescentmoondesign.com" class="btn btn--primary">Start a Conversation →</a>
+        <span class="cta-location">Based in Portola, CA — working nationwide</span>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>
 
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script is:inline src="https://unpkg.com/split-type@0.3.4/umd/index.min.js" defer></script>
-
 <script is:inline>
 (function() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -163,128 +345,77 @@ const featured = cases.filter(c => c.data.featured);
     var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
     // Phase 1: Moon entrance
-    tl.fromTo('.hero__moon-svg',
-      { scale: 0.9, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 1.2, ease: 'power2.out' }
-    );
+    tl.fromTo('.hero__moon-svg', { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: 'power2.out' });
     tl.to('.hero__moon-glow', { opacity: 1, duration: 0.8, ease: 'sine.inOut' }, '-=0.4');
     tl.to({}, { duration: 0.5 });
 
     // Phase 2: Eclipse + text sweep
     var sweepDur = 2.4;
     var sweepEase = 'power2.inOut';
-
-    tl.to('.eclipse-shadow', {
-      attr: { cx: 288 }, duration: sweepDur, ease: sweepEase
-    });
-    tl.fromTo('.hero__text',
-      { opacity: 0, x: 60 },
-      { opacity: 1, x: 0, duration: sweepDur * 0.8, ease: sweepEase },
-      '-=0.6'
-    );
+    tl.to('.eclipse-shadow', { attr: { cx: 288 }, duration: sweepDur, ease: sweepEase });
+    tl.fromTo('.hero__text', { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: sweepDur * 0.8, ease: sweepEase }, '-=0.6');
     tl.to('.hero__moon-glow', { opacity: 0.3, duration: sweepDur, ease: 'sine.in' }, '<');
 
-    // Phase 3: Character settle with SplitType
+    // Phase 3: Character settle
     var nameSplit = new SplitType('.agency-name', { types: 'chars' });
     var taglineSplit = new SplitType('.tagline', { types: 'words' });
     var introSplit = new SplitType('.services-intro', { types: 'chars' });
-
     tl.to('.hero__moon-glow', { opacity: 0.7, scale: 1.06, duration: 0.5, ease: 'power2.out' });
     tl.to('.hero__moon-glow', { opacity: 0.4, scale: 1, duration: 0.9, ease: 'sine.inOut' });
+    tl.to(nameSplit.chars, { opacity: 1, x: 0, duration: 0.55, stagger: 0.028, ease: 'power3.out' }, '-=1.1');
+    tl.to(taglineSplit.words, { opacity: 1, x: 0, duration: 0.45, stagger: 0.05, ease: 'power3.out' }, '-=0.7');
+    tl.to(introSplit.chars, { opacity: 1, x: 0, duration: 0.35, stagger: 0.012, ease: 'power2.out' }, '-=0.4');
 
-    tl.to(nameSplit.chars, {
-      opacity: 1, x: 0, duration: 0.55, stagger: 0.028, ease: 'power3.out'
-    }, '-=1.1');
-    tl.to(taglineSplit.words, {
-      opacity: 1, x: 0, duration: 0.45, stagger: 0.05, ease: 'power3.out'
-    }, '-=0.7');
-    tl.to(introSplit.chars, {
-      opacity: 1, x: 0, duration: 0.35, stagger: 0.012, ease: 'power2.out'
-    }, '-=0.4');
-
-    // Phase 4: Scroll — moon docks to top-left
+    // Phase 4: Moon docks
     gsap.to('.hero__moon-container', {
-      scrollTrigger: {
-        trigger: '.hero',
-        start: '60% top',
-        end: 'bottom top',
-        scrub: 1
-      },
-      scale: 0.08,
-      x: function() { return -window.innerWidth * 0.42; },
-      y: function() { return -window.innerHeight * 0.38; },
-      opacity: 0,
-      ease: 'none'
+      scrollTrigger: { trigger: '.hero', start: '60% top', end: 'bottom top', scrub: 1 },
+      scale: 0.08, x: function() { return -window.innerWidth * 0.42; }, y: function() { return -window.innerHeight * 0.38; }, opacity: 0, ease: 'none'
     });
-
-    // Docked moon fades in
     gsap.to('.moon-dock', {
-      scrollTrigger: {
-        trigger: '.hero',
-        start: '75% top',
-        end: 'bottom top',
-        scrub: 1
-      },
-      opacity: 1,
-      scale: 1,
-      ease: 'none'
+      scrollTrigger: { trigger: '.hero', start: '75% top', end: 'bottom top', scrub: 1 },
+      opacity: 1, scale: 1, ease: 'none'
     });
 
     // Phase 5: Island nav slides in
     gsap.to('.island-nav', {
-      scrollTrigger: {
-        trigger: '.hero',
-        start: '70% top',
-        end: '90% top',
-        scrub: 1
-      },
-      y: 0,
-      opacity: 1,
-      ease: 'none'
+      scrollTrigger: { trigger: '.hero', start: '70% top', end: '90% top', scrub: 1 },
+      y: 0, opacity: 1, ease: 'none'
     });
 
-    // Section panels are always visible (scroll reveal removed for reliability)
-
-    // Phase 7: Red indicator scroll-spy
+    // Service detail scroll-spy: highlight active, fade others
+    var detailSections = document.querySelectorAll('.service-detail');
     var navItems = document.querySelectorAll('.island-nav .nav-item');
     var indicator = document.querySelector('.nav-indicator');
-    var sections = document.querySelectorAll('.section-panel, .section--alt');
 
     function moveIndicator(el) {
-      gsap.to(indicator, {
-        x: el.offsetLeft,
-        width: el.offsetWidth,
-        duration: 0.4,
-        ease: 'power3.out'
-      });
+      gsap.to(indicator, { x: el.offsetLeft, width: el.offsetWidth, duration: 0.4, ease: 'power3.out' });
     }
-
     moveIndicator(navItems[0]);
 
-    sections.forEach(function(section, i) {
-      ScrollTrigger.create({
-        trigger: section,
-        start: 'top center',
-        end: 'bottom center',
-        onEnter: function() {
-          navItems.forEach(function(n) { n.classList.remove('active'); });
-          navItems[i].classList.add('active');
-          moveIndicator(navItems[i]);
-        },
-        onEnterBack: function() {
-          navItems.forEach(function(n) { n.classList.remove('active'); });
-          navItems[i].classList.add('active');
-          moveIndicator(navItems[i]);
-        }
-      });
-    });
-
-    // Smooth scroll on nav click
     navItems.forEach(function(item) {
       item.addEventListener('click', function(e) {
         e.preventDefault();
         var target = document.querySelector(item.getAttribute('href'));
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+
+    var sections = document.querySelectorAll('.service-detail');
+    sections.forEach(function(section, i) {
+      ScrollTrigger.create({
+        trigger: section, start: 'top center', end: 'bottom center',
+        onEnter: function() {
+          navItems.forEach(function(n) { n.classList.remove('active'); });
+          if (navItems[i]) { navItems[i].classList.add('active'); moveIndicator(navItems[i]); }
+          gsap.to(section, { opacity: 1, duration: 0.4 });
+          detailSections.forEach(function(s, j) { if (j !== i) gsap.to(s, { opacity: 0.15, duration: 0.4 }); });
+        },
+        onEnterBack: function() {
+          navItems.forEach(function(n) { n.classList.remove('active'); });
+          if (navItems[i]) { navItems[i].classList.add('active'); moveIndicator(navItems[i]); }
+          gsap.to(section, { opacity: 1, duration: 0.4 });
+          detailSections.forEach(function(s, j) { if (j !== i) gsap.to(s, { opacity: 0.15, duration: 0.4 }); });
+        }
       });
     });
   }
@@ -300,7 +431,7 @@ const featured = cases.filter(c => c.data.featured);
 </script>
 
 <style>
-  /* --- Hero --- */
+  /* === HERO === */
   .hero {
     position: relative;
     display: flex;
@@ -311,400 +442,243 @@ const featured = cases.filter(c => c.data.featured);
     overflow: hidden;
     background: var(--bg) url('https://cm-circle.github.io/Crescent-Moon-Design/nightsky.webp') center center / cover no-repeat fixed;
   }
-
   @supports not (background: url('https://cm-circle.github.io/Crescent-Moon-Design/nightsky.webp')) {
-    .hero {
-      background: var(--bg) url('https://cm-circle.github.io/Crescent-Moon-Design/nightsky.jpg') center center / cover no-repeat fixed;
-    }
+    .hero { background: var(--bg) url('https://cm-circle.github.io/Crescent-Moon-Design/nightsky.jpg') center center / cover no-repeat fixed; }
   }
-
   .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(5, 5, 8, 0.55);
-    z-index: 1;
-    pointer-events: none;
+    content: ''; position: absolute; inset: 0;
+    background: rgba(5, 5, 8, 0.55); z-index: 1; pointer-events: none;
   }
-
   .hero__moon-container {
-    position: relative;
-    width: clamp(420px, 58vw, 780px);
-    height: clamp(420px, 58vw, 780px);
-    flex-shrink: 0;
-    margin-left: clamp(-60px, -4vw, -20px);
-    overflow: visible;
-    z-index: 2;
+    position: relative; width: clamp(420px, 58vw, 780px); height: clamp(420px, 58vw, 780px);
+    flex-shrink: 0; margin-left: clamp(-60px, -4vw, -20px); overflow: visible; z-index: 2;
   }
-
-  .hero__moon-svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-
-  .moon-img {
-    display: block;
-  }
-
+  .hero__moon-svg { width: 100%; height: 100%; display: block; }
+  .moon-img { display: block; }
   .hero__moon-glow {
-    position: absolute;
-    inset: -15%;
-    border-radius: 50%;
+    position: absolute; inset: -15%; border-radius: 50%;
     background: radial-gradient(circle, var(--glow) 0%, transparent 65%);
-    opacity: 0;
-    pointer-events: none;
+    opacity: 0; pointer-events: none;
   }
-
   .hero__text {
-      position: absolute;
-      z-index: 2;
-      left: 48%;
-      top: 50%;
-      transform: translateY(-50%) translateX(60px);
-      opacity: 0;
-      text-align: left;
-      overflow: visible;
-      white-space: nowrap;
-    }
-
-  .hero__title {
-    font-size: clamp(2.7rem, 4.8vw, 4.5rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.08;
-    margin-bottom: 0.9rem;
-    color: var(--fg);
+    position: absolute; z-index: 2; left: 48%; top: 50%;
+    transform: translateY(-50%) translateX(60px); opacity: 0; text-align: left; white-space: nowrap;
   }
-
-  .hero__tagline {
-    font-size: clamp(1.28rem, 2.1vw, 1.65rem);
-    font-weight: 300;
-    color: var(--accent);
-    margin-bottom: 1.4rem;
-    letter-spacing: 0.01em;
-    line-height: 1.5;
-  }
-
-  .hero__services {
-      font-size: clamp(0.98rem, 1.5vw, 1.2rem);
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-    }
-
-    /* --- Docked moon (top-left corner logo) --- */
-    .moon-dock {
-      position: fixed;
-      top: 16px;
-      left: 16px;
-      width: 52px;
-      height: 52px;
-      z-index: 100;
-      opacity: 0;
-      transform: scale(0.5);
-      pointer-events: none;
-    }
-
-    .moon-dock svg { width: 100%; height: 100%; }
-
-    /* --- Island Navigation --- */
-    .island-nav {
-      position: fixed;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%) translateY(-80px);
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      gap: 0;
-      background: rgba(10, 10, 18, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 40px;
-      padding: 6px 8px;
-      opacity: 0;
-    }
-
-    .island-nav .nav-item {
-      position: relative;
-      padding: 10px 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      text-decoration: none;
-      white-space: nowrap;
-      transition: color 0.3s ease;
-      cursor: pointer;
-    }
-
-    .island-nav .nav-item.active {
-      color: var(--fg);
-    }
-
-    /* Red sliding indicator */
-    .nav-indicator {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      height: calc(100% - 12px);
-      transform: translateY(-50%);
-      background: rgba(230, 57, 70, 0.15);
-      border: 1px solid var(--red);
-      border-radius: 30px;
-      transition: none;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    /* --- SplitType character animations --- */
-    .agency-name .char { display: inline-block; opacity: 0; transform: translateX(30px); }
-    .tagline .word { display: inline-block; opacity: 0; transform: translateX(24px); }
-    .services-intro .char { display: inline-block; opacity: 0; transform: translateX(16px); }
-
+  .hero__title { font-size: clamp(2.7rem, 4.8vw, 4.5rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 0.9rem; color: var(--fg); }
+  .hero__tagline { font-size: clamp(1.28rem, 2.1vw, 1.65rem); font-weight: 300; color: var(--accent); margin-bottom: 1.4rem; letter-spacing: 0.01em; line-height: 1.5; }
+  .hero__services { font-size: clamp(0.98rem, 1.5vw, 1.2rem); color: var(--muted); text-transform: uppercase; letter-spacing: 0.18em; }
   .hero__scroll-cue {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-    z-index: 2;
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.4rem; z-index: 2;
+  }
+  .hero__scroll-text { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); }
+  .hero__scroll-arrow { font-size: 1.1rem; color: var(--accent); animation: bounce 1.8s ease-in-out infinite; }
+  @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  /* === DOCKED MOON === */
+  .moon-dock {
+    position: fixed; top: 16px; left: 16px; width: 52px; height: 52px;
+    z-index: 100; opacity: 0; transform: scale(0.5); pointer-events: none;
+  }
+  .moon-dock svg { width: 100%; height: 100%; }
+
+  /* === ISLAND NAV === */
+  .island-nav {
+    position: fixed; top: 18px; left: 50%; transform: translateX(-50%) translateY(-80px);
+    z-index: 100; display: flex; align-items: center; gap: 0;
+    background: rgba(10, 10, 18, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; padding: 6px 8px; opacity: 0;
+  }
+  .island-nav .nav-item {
+    position: relative; padding: 10px 20px; font-size: 0.8rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted);
+    text-decoration: none; white-space: nowrap; transition: color 0.3s ease; cursor: pointer;
+  }
+  .island-nav .nav-item.active { color: var(--fg); }
+  .nav-indicator {
+    position: absolute; top: 50%; left: 0; height: calc(100% - 12px);
+    transform: translateY(-50%); background: rgba(230, 57, 70, 0.15);
+    border: 1px solid var(--red); border-radius: 30px; transition: none;
+    pointer-events: none; z-index: -1;
   }
 
-  .hero__scroll-text {
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--muted);
+  /* === SERVICE DETAIL RAIL === */
+  .service-detail {
+    min-height: 100vh; display: flex; align-items: center;
+    background: var(--bg-solid); padding: 5rem 0; position: relative;
+  }
+  .service-detail:not(.active) { opacity: 0.15; }
+  .service-detail.active { opacity: 1; }
+  .service-detail__inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .service-detail__number {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
+    color: var(--red); margin-bottom: 0.5rem; text-transform: uppercase;
+  }
+  .service-detail__content h2 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; letter-spacing: -0.03em; color: var(--fg); margin-bottom: 0.5rem; }
+  .service-detail__tagline { font-size: 1.1rem; color: var(--accent); margin-bottom: 2rem; font-style: italic; }
+  .service-detail__list { list-style: none; padding: 0; margin: 0; }
+  .service-detail__list li { font-size: 0.95rem; color: var(--fg); padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .service-detail__list li strong { color: var(--accent); font-weight: 600; }
+  .service-detail__flow {
+    text-align: center; margin-top: 1.5rem; font-size: 0.75rem;
+    letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase;
   }
 
-  .hero__scroll-arrow {
-    font-size: 1.1rem;
-    color: var(--accent);
-    animation: bounce 1.8s ease-in-out infinite;
+  /* Browser frame */
+  .browser-frame { background: #1a1a2e; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+  .browser-bar { display: flex; gap: 6px; padding: 10px 14px; background: #111122; }
+  .browser-bar span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.15); }
+  .browser-content { padding: 1.5rem; }
+
+  /* Site preview */
+  .site-preview { display: flex; gap: 10px; }
+  .site-preview__sidebar { width: 30px; background: rgba(255,255,255,0.05); border-radius: 4px; flex-shrink: 0; }
+  .site-preview__main { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .site-preview__hero-img { height: 60px; background: linear-gradient(135deg, #1e3a5f 0%, #2a4a7f 100%); border-radius: 4px; }
+  .site-preview__line { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; }
+  .site-preview__line.w-60 { width: 60%; }
+  .site-preview__line.w-80 { width: 80%; }
+  .site-preview__line.w-40 { width: 40%; }
+  .site-preview__grid { display: flex; gap: 6px; margin-top: 4px; }
+  .site-preview__card { flex: 1; height: 30px; background: rgba(255,255,255,0.06); border-radius: 4px; }
+
+  /* Social preview */
+  .social-preview { display: flex; flex-direction: column; gap: 12px; }
+  .social-preview__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .social-preview__post { height: 55px; background: linear-gradient(135deg, #2a1a3f 0%, #3a2a5f 100%); border-radius: 6px; }
+  .social-preview__stat { display: flex; justify-content: center; }
+  .social-preview__stat-circle {
+    width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--accent);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  }
+  .social-preview__stat-circle span { font-size: 0.9rem; font-weight: 700; color: var(--accent); }
+  .social-preview__stat-circle small { font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+
+  /* SEO preview */
+  .seo-preview { display: flex; flex-direction: column; gap: 16px; }
+  .seo-preview__chart { display: flex; align-items: flex-end; gap: 8px; height: 80px; }
+  .seo-preview__bar { flex: 1; background: rgba(255,255,255,0.1); border-radius: 4px 4px 0 0; }
+  .seo-preview__bar--highlight { background: var(--accent); }
+  .seo-preview__badges { display: flex; gap: 8px; flex-wrap: wrap; }
+  .seo-preview__badge {
+    padding: 4px 10px; border: 1px solid var(--accent); border-radius: 20px;
+    font-size: 0.65rem; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase;
   }
 
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
+  /* === CASE STUDIES === */
+  .section--cases { background: var(--bg-solid); padding: 5rem 0; }
+  .section__header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3rem; }
+  .section__header h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -0.03em; color: var(--fg); }
+  .section__label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); padding-top: 0.5rem; }
+
+  .case-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+  .case-card { background: rgba(15,15,25,0.85); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+  .case-card--tall { }
+  .case-card--full { }
+  .case-card__visual { height: 240px; overflow: hidden; }
+  .case-card__visual--social { background: linear-gradient(135deg, #1a1a2e, #2a1a3e); display: flex; align-items: center; justify-content: center; }
+  .case-card__visual--seo { background: linear-gradient(135deg, #0d1f2d, #1a3a4a); display: flex; align-items: center; justify-content: center; }
+  .case-card__visual--web { background: linear-gradient(135deg, #1a2e1a, #2a4a2a); display: flex; align-items: center; justify-content: center; }
+
+  /* Social card art */
+  .social-card-art { position: relative; width: 140px; height: 140px; display: flex; align-items: center; justify-content: center; }
+  .social-card-art__ring { width: 120px; height: 120px; border-radius: 50%; border: 2px solid rgba(230,57,70,0.3); position: absolute; }
+  .social-card-art__ring--sm { width: 80px; height: 80px; border-color: rgba(230,57,70,0.6); }
+  .social-card-art__stat { position: relative; z-index: 1; text-align: center; }
+  .social-card-art__num { display: block; font-size: 1.4rem; font-weight: 700; color: var(--red); }
+  .social-card-art__label { font-size: 0.6rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
+
+  /* SEO card art */
+  .seo-card-art { position: relative; width: 140px; height: 100px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .seo-card-art__map { position: relative; width: 100px; height: 60px; }
+  .seo-card-art__pin { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+  .seo-card-art__pin--2 { top: 30%; left: 65%; transform: translate(-50%,-50%); background: rgba(46,196,182,0.7); box-shadow: 0 0 8px rgba(46,196,182,0.5); }
+  .seo-card-art__rays { position: absolute; inset: -10px; border-radius: 50%; background: radial-gradient(circle, rgba(46,196,182,0.1) 0%, transparent 70%); }
+  .seo-card-art__badges { display: flex; gap: 8px; }
+  .seo-card-art__badges span { padding: 3px 10px; border: 1px solid var(--accent); border-radius: 20px; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; }
+
+  /* Web card art */
+  .web-card-art { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 1.5rem; }
+  .web-card-art__device { background: #111; border-radius: 8px; padding: 8px; width: 160px; }
+  .web-card-art__screen { background: #1a2e1a; border-radius: 4px; overflow: hidden; padding: 6px; }
+  .web-card-art__site-header { height: 12px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-bottom: 4px; }
+  .web-card-art__site-hero { height: 30px; background: linear-gradient(90deg, #2a4a2a, #3a5a3a); border-radius: 2px; margin-bottom: 4px; }
+  .web-card-art__site-body { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; }
+  .web-card-art__badge { position: absolute; bottom: 12px; right: 12px; padding: 3px 10px; background: var(--accent); border-radius: 20px; font-size: 0.6rem; font-weight: 700; color: #000; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .case-card__body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+  .case-card__num { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); }
+  .case-card__title { font-size: 1.15rem; font-weight: 700; color: var(--fg); }
+  .case-card__desc { font-size: 0.85rem; line-height: 1.6; color: var(--muted); flex: 1; }
+  .case-card__metrics { display: flex; gap: 1rem; font-size: 0.75rem; color: var(--accent); font-weight: 600; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.06); }
+  .case-card__link { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); text-decoration: none; margin-top: 0.5rem; }
+  .case-card__body--web { flex: 1; }
+
+  .cases-cta { text-align: center; padding-top: 2rem; }
+  .cases-cta__link { font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 4px; transition: color 0.2s, border-color 0.2s; }
+  .cases-cta__link:hover { color: var(--fg); border-color: var(--fg); }
+
+  /* === PROCESS === */
+  .section--process { background: var(--bg-solid); padding: 5rem 0; border-top: 1px solid rgba(255,255,255,0.04); }
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
+  .process-step { }
+  .process-step__num { font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.05); display: block; margin-bottom: 0.5rem; }
+  .process-step h3 { font-size: 1rem; font-weight: 600; color: var(--fg); margin-bottom: 0.5rem; }
+  .process-step p { font-size: 0.85rem; line-height: 1.7; color: var(--muted); }
+  .process-quote {
+    margin-top: 3rem; padding: 2rem; border-left: 2px solid var(--accent);
+    font-size: 1rem; line-height: 1.7; color: var(--muted); font-style: italic; max-width: 640px;
   }
 
-  /* --- Content Sections --- */
-  .content-sections {
-    position: relative;
-    z-index: 1;
-    background: var(--bg-solid);
+  /* === AUTOMATION === */
+  .section--automation { background: var(--bg-solid); padding: 5rem 0; border-top: 1px solid rgba(255,255,255,0.04); }
+  .automation-block { max-width: 800px; margin: 0 auto; text-align: center; }
+  .automation-block h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--fg); margin: 0.5rem 0 1rem; letter-spacing: -0.03em; }
+  .automation-block p { font-size: 1rem; color: var(--muted); max-width: 480px; margin: 0 auto 2rem; line-height: 1.7; }
+  .automation-flow { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .automation-flow span { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg); }
+  .flow-arrow { color: var(--accent); font-size: 1rem; }
+
+  /* === PRIMARY CTA === */
+  .section--cta { background: var(--bg-solid); padding: 6rem 0; border-top: 1px solid rgba(255,255,255,0.04); text-align: center; }
+  .section--cta h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: var(--fg); letter-spacing: -0.03em; margin-bottom: 1rem; }
+  .section--cta p { font-size: 1rem; color: var(--muted); margin-bottom: 2.5rem; line-height: 1.7; }
+  .cta-footer { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .cta-location { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* === BUTTONS === */
+  .btn { display: inline-block; padding: 0.9rem 2rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; cursor: pointer; }
+  .btn--primary { background: var(--red); color: #fff; border: 1px solid var(--red); }
+  .btn--primary:hover { background: transparent; color: var(--red); }
+  .btn--outline-teal { background: transparent; color: var(--blue); border: 1px solid var(--blue); }
+  .btn--outline-teal:hover { background: rgba(46,196,182,0.1); }
+
+  /* === SplitType === */
+  .agency-name .char { display: inline-block; opacity: 0; transform: translateX(30px); }
+  .tagline .word { display: inline-block; opacity: 0; transform: translateX(24px); }
+  .services-intro .char { display: inline-block; opacity: 0; transform: translateX(16px); }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 900px) {
+    .service-detail__inner { grid-template-columns: 1fr; gap: 2rem; }
+    .case-cards { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .hero__text { left: 35%; }
   }
-
-  .section-panel {
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 6rem 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-      background: #0f0f19d9 !important;
-      border: 3px solid #e63946 !important;
-      border-radius: 16px;
-      position: relative;
-    }
-
-    .section-panel + .section-panel {
-      margin-top: 2rem;
-    }
-
-    .section-panel h2 {
-      margin-bottom: 1.5rem;
-    }
-
-    .section-panel > p {
-      font-size: clamp(1rem, 1.7vw, 1.12rem);
-      line-height: 1.85;
-      color: var(--fg);
-      max-width: 640px;
-    }
-
-    .section-panel .tag {
-      color: var(--red);
-    }
-
-  /* --- Case Studies --- */
-  .section-intro {
-    font-size: 1.1rem;
-    color: var(--muted);
-    max-width: 600px;
-    margin-bottom: 3rem;
-  }
-
-  .case-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 2rem;
-  }
-
-  .case-card {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 2.5rem 2rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    color: inherit;
-    transition: border-color 0.3s ease, transform 0.2s ease;
-  }
-
-  .case-card:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-3px);
-  }
-
-  .case-card__category {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--red);
-  }
-
-  .case-card__title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--fg);
-  }
-
-  .case-card__tagline {
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: var(--muted);
-  }
-
-  .case-card__stats {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 0.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border);
-  }
-
-  .case-card__stat {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .case-card__stat-value {
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  .case-card__stat-label {
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    margin-top: 0.2rem;
-  }
-
-  .case-card__link {
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--red);
-    margin-top: 0.5rem;
-  }
-
-  /* --- Automation Callout --- */
-  .automation-callout {
-    background: var(--bg-solid);
-    padding-bottom: 5rem;
-  }
-
-  .automation-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    background: rgba(46, 196, 182, 0.04);
-    border: 1px solid rgba(46, 196, 182, 0.15);
-    border-radius: var(--border-radius);
-    padding: 3rem 2rem;
-    text-align: center;
-  }
-
-  .automation-inner h2 {
-    margin: 0.8rem 0 1rem;
-    color: var(--blue);
-  }
-
-  .automation-inner p {
-    font-size: 1rem;
-    color: var(--muted);
-    max-width: 520px;
-    margin: 0 auto 1.5rem;
-  }
-
-  /* --- Responsive --- */
   @media (max-width: 700px) {
-    .hero {
-      flex-direction: column;
-      justify-content: center;
-      padding: 2rem 1rem;
-    }
-
-    .hero__moon-container {
-      margin-left: 0;
-      width: clamp(280px, 85vw, 480px);
-      height: clamp(280px, 85vw, 480px);
-    }
-
-    .hero__text {
-      position: relative;
-      left: auto;
-      top: auto;
-      transform: none;
-      max-width: 100%;
-      margin: 1.5rem auto 0;
-      text-align: center;
-      white-space: normal;
-    }
-
-    .section-panel {
-      min-height: 60vh;
-      padding: 4rem 1.5rem;
-    }
-
-    .case-grid {
-      grid-template-columns: 1fr;
-    }
+    .hero { flex-direction: column; justify-content: center; padding: 2rem 1rem; }
+    .hero__moon-container { margin-left: 0; width: clamp(280px, 85vw, 480px); height: clamp(280px, 85vw, 480px); }
+    .hero__text { position: relative; left: auto; top: auto; transform: none; max-width: 100%; margin: 1.5rem auto 0; text-align: center; white-space: normal; }
+    .process-grid { grid-template-columns: 1fr; }
+    .service-detail { padding: 3rem 0; }
   }
-
   @media (prefers-reduced-motion: reduce) {
-      .hero__scroll-arrow {
-        animation: none;
-      }
-
-      .hero__moon-svg,
-      .hero__moon-glow,
-      .hero__text,
-      .moon-dock,
-      .island-nav {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-
-      .agency-name .char,
-      .tagline .word,
-      .services-intro .char {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-    }
-  </style>
+    .hero__scroll-arrow { animation: none; }
+    .hero__moon-svg, .hero__moon-glow, .hero__text, .moon-dock, .island-nav { opacity: 1 !important; transform: none !important; }
+    .agency-name .char, .tagline .word, .services-intro .char { opacity: 1 !important; transform: none !important; }
+    .service-detail { opacity: 1 !important; }
+  }
+</style>

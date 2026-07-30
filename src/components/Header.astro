@@ -12,8 +12,16 @@ const navLinks = [
 <header class="site-header">
   <nav class="site-nav">
     <a href="/" class="site-nav__brand">
-      <svg class="site-nav__moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      <svg class="site-nav__moon" viewBox="0 0 400 400" width="28" height="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+          <mask id="header-mask">
+            <rect width="400" height="400" fill="black"/>
+            <circle cx="200" cy="200" r="185" fill="white"/>
+            <circle cx="288" cy="200" r="130" fill="black"/>
+          </mask>
+        </defs>
+        <image xlink:href="/Crescent-Moon-Design/moon.webp" x="15" y="15" width="370" height="370"
+               preserveAspectRatio="xMidYMid slice" mask="url(#header-mask)"/>
       </svg>
       Crescent Moon Design
     </a>
@@ -58,8 +66,9 @@ const navLinks = [
   }
 
   .site-nav__moon {
-    color: var(--accent);
     flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
   }
 
   .site-nav__links {

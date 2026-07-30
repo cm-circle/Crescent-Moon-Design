@@ -1,5 +1,5 @@
 ---
-const primaryLinks = [
+const navLinks = [
   { href: '/#section-web', label: 'Web' },
   { href: '/#section-social', label: 'Social' },
   { href: '/#section-seo', label: 'SEO & AI' },
@@ -7,16 +7,9 @@ const primaryLinks = [
   { href: '/case-studies', label: 'Case Studies' },
   { href: '/#contact', label: 'Contact' },
 ];
-
-const islandLinks = [
-  { href: '#section-web', label: 'Web Design' },
-  { href: '#section-social', label: 'Social Media' },
-  { href: '#section-seo', label: 'SEO / GEO' },
-  { href: '#section-cases', label: 'Case Studies' },
-];
 ---
 
-<header class="site-header" id="site-header">
+<header class="site-header">
   <nav class="site-nav">
     <a href="/" class="site-nav__brand">
       <svg class="site-nav__moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -24,51 +17,13 @@ const islandLinks = [
       </svg>
       Crescent Moon Design
     </a>
-
-    <!-- Full nav (default) -->
-    <div class="site-nav__group site-nav__primary">
-      {primaryLinks.map(link => (
+    <div class="site-nav__links">
+      {navLinks.map(link => (
         <a href={link.href} class="site-nav__link">{link.label}</a>
-      ))}
-    </div>
-
-    <!-- Island nav (shown on scroll) -->
-    <div class="site-nav__group site-nav__island">
-      <div class="site-nav__indicator"></div>
-      {islandLinks.map(link => (
-        <a href={link.href} class="site-nav__link site-nav__island-link">{link.label}</a>
       ))}
     </div>
   </nav>
 </header>
-
-<script>
-  // When scrolling past hero, switch header to island nav mode
-  // and fade out the floating island nav
-  document.addEventListener('DOMContentLoaded', function() {
-    var header = document.getElementById('site-header');
-    var islandNav = document.querySelector('.island-nav');
-    if (!header || !islandNav) return;
-
-    function onScroll() {
-      var hero = document.querySelector('.hero');
-      if (!hero) return;
-      var heroBottom = hero.getBoundingClientRect().bottom;
-      var threshold = 80; // px below hero top into viewport
-
-      if (heroBottom < threshold) {
-        header.classList.add('header--island');
-        islandNav.classList.add('island-nav--hidden');
-      } else {
-        header.classList.remove('header--island');
-        islandNav.classList.remove('island-nav--hidden');
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  });
-</script>
 
 <style>
   .site-header {
@@ -79,7 +34,6 @@ const islandLinks = [
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    transition: border-color 0.4s ease, background 0.4s ease;
   }
 
   .site-nav {
@@ -101,7 +55,6 @@ const islandLinks = [
     color: var(--fg);
     text-decoration: none;
     letter-spacing: -0.01em;
-    flex-shrink: 0;
   }
 
   .site-nav__moon {
@@ -109,11 +62,10 @@ const islandLinks = [
     flex-shrink: 0;
   }
 
-  .site-nav__group {
+  .site-nav__links {
     display: flex;
-    align-items: center;
     gap: 1.5rem;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    align-items: center;
   }
 
   .site-nav__link {
@@ -124,80 +76,15 @@ const islandLinks = [
     color: var(--muted);
     text-decoration: none;
     transition: color 0.2s;
-    white-space: nowrap;
   }
 
   .site-nav__link:hover {
     color: var(--fg);
   }
 
-  /* ---- Island nav group (hidden by default) ---- */
-  .site-nav__island {
-    position: relative;
-    opacity: 0;
-    transform: translateY(-4px);
-    pointer-events: none;
-    gap: 0.5rem;
-    padding: 4px;
-    border-radius: 40px;
-  }
-
-  .site-nav__island-link {
-    position: relative;
-    padding: 6px 16px;
-    border-radius: 30px;
-    z-index: 1;
-  }
-
-  .site-nav__island-link.active {
-    color: var(--fg);
-  }
-
-  .site-nav__indicator {
-    position: absolute;
-    top: 4px;
-    bottom: 4px;
-    left: 0;
-    background: rgba(230, 57, 70, 0.15);
-    border: 1px solid var(--red);
-    border-radius: 30px;
-    transition: none;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* ---- Header island mode ---- */
-  .header--island .site-nav__primary {
-    opacity: 0;
-    transform: translateY(4px);
-    pointer-events: none;
-  }
-
-  .header--island .site-nav__island {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .header--island {
-    background: rgba(10, 10, 18, 0.92);
-    border-bottom-color: rgba(255, 255, 255, 0.05);
-  }
-
   @media (max-width: 700px) {
-    .site-nav__group {
-      gap: 0.8rem;
-    }
-    .site-nav__link {
-      font-size: 0.65rem;
-    }
-    .site-nav__island {
-      gap: 0.25rem;
-      padding: 3px;
-    }
-    .site-nav__island-link {
-      padding: 4px 10px;
-      font-size: 0.6rem;
+    .site-nav__links {
+      display: none;
     }
   }
 </style>

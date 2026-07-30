@@ -4,14 +4,19 @@ const navLinks = [
   { href: '/#section-social', label: 'Social' },
   { href: '/#section-seo', label: 'SEO & AI' },
   { href: '/services/automation', label: 'Automation' },
-  { href: '/case-studies', label: 'Work' },
+  { href: '/case-studies', label: 'Case Studies' },
   { href: '/#contact', label: 'Contact' },
 ];
 ---
 
 <header class="site-header">
   <nav class="site-nav">
-    <a href="/" class="site-nav__brand">☽ Crescent Moon Design</a>
+    <a href="/" class="site-nav__brand">
+      <svg class="site-nav__moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      Crescent Moon Design
+    </a>
     <div class="site-nav__links">
       {navLinks.map(link => (
         <a href={link.href} class="site-nav__link">{link.label}</a>
@@ -42,11 +47,19 @@ const navLinks = [
   }
 
   .site-nav__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-weight: 700;
     font-size: 0.88rem;
     color: var(--fg);
     text-decoration: none;
     letter-spacing: -0.01em;
+  }
+
+  .site-nav__moon {
+    color: var(--accent);
+    flex-shrink: 0;
   }
 
   .site-nav__links {

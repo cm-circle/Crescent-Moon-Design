@@ -259,3 +259,9 @@ p strong {
   color: var(--fg);
   font-weight: 600;
 }
+
+/* ---- Force service sections visible ---- */
+.section-panel {
+  background: #0f0f19d9 !important;
+  border: 3px solid #e63946 !important;
+}

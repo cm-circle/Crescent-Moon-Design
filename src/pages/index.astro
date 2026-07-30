@@ -63,23 +63,23 @@ const featured = cases.filter(c => c.data.featured);
   </section>
 
   <!-- Services -->
-  <section class="section-panel" id="section-web">
-    <span class="tag">01 — Web Design</span>
-    <h2>Sites that pull their weight</h2>
-    <p>High-performance, responsive builds engineered for speed and story. We design and develop sites that convert visitors into believers — accessible, fast, and unmistakably yours.</p>
-  </section>
+  <section class="section-panel" id="section-web" style="background:#0f0f19d9;border:3px solid #e63946;border-radius:16px;padding:6rem 2rem;margin:0 auto 2rem;max-width:900px;text-align:center;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <span class="tag">01 — Web Design</span>
+      <h2>Sites that pull their weight</h2>
+      <p>High-performance, responsive builds engineered for speed and story. We design and develop sites that convert visitors into believers — accessible, fast, and unmistakably yours.</p>
+    </section>
 
-  <section class="section-panel" id="section-social">
-    <span class="tag">02 — Social Media</span>
-    <h2>Content with gravitational pull</h2>
-    <p>Strategy, calendars, and creative that keep your audience in orbit. We build presence across platforms with consistent voice, visual identity, and measurable growth.</p>
-  </section>
+    <section class="section-panel" id="section-social" style="background:#0f0f19d9;border:3px solid #e63946;border-radius:16px;padding:6rem 2rem;margin:0 auto 2rem;max-width:900px;text-align:center;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <span class="tag">02 — Social Media</span>
+      <h2>Content with gravitational pull</h2>
+      <p>Strategy, calendars, and creative that keep your audience in orbit. We build presence across platforms with consistent voice, visual identity, and measurable growth.</p>
+    </section>
 
-  <section class="section-panel" id="section-seo">
-    <span class="tag">03 — SEO / GEO</span>
-    <h2>Found by the right people</h2>
-    <p>Search and generative engine optimization that maps the trajectory from first query to lasting loyalty. Technical audits, content architecture, and local visibility.</p>
-  </section>
+    <section class="section-panel" id="section-seo" style="background:#0f0f19d9;border:3px solid #e63946;border-radius:16px;padding:6rem 2rem;margin:0 auto 2rem;max-width:900px;text-align:center;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <span class="tag">03 — SEO / GEO</span>
+      <h2>Found by the right people</h2>
+      <p>Search and generative engine optimization that maps the trajectory from first query to lasting loyalty. Technical audits, content architecture, and local visibility.</p>
+    </section>
 
   <!-- Case Studies Preview -->
     <section class="section section--alt" id="section-cases">
@@ -482,31 +482,39 @@ const featured = cases.filter(c => c.data.featured);
   }
 
   .section-panel {
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 5rem 2rem;
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-  }
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      background: #0f0f19d9 !important;
+      border: 3px solid #e63946 !important;
+      border-radius: 16px;
+      position: relative;
+    }
 
-  .section-panel h2 {
-    margin-bottom: 1.5rem;
-  }
+    .section-panel + .section-panel {
+      margin-top: 2rem;
+    }
 
-  .section-panel > p {
-    font-size: clamp(1rem, 1.7vw, 1.12rem);
-    line-height: 1.85;
-    color: var(--fg);
-    max-width: 640px;
-  }
+    .section-panel h2 {
+      margin-bottom: 1.5rem;
+    }
 
-  .section-panel .tag {
-    color: var(--red);
-  }
+    .section-panel > p {
+      font-size: clamp(1rem, 1.7vw, 1.12rem);
+      line-height: 1.85;
+      color: var(--fg);
+      max-width: 640px;
+    }
+
+    .section-panel .tag {
+      color: var(--red);
+    }
 
   /* --- Case Studies --- */
   .section-intro {

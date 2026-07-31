@@ -1,10 +1,9 @@
 ---
 const navLinks = [
-  { href: '/#section-web', label: 'Web' },
-  { href: '/#section-social', label: 'Social' },
-  { href: '/#section-seo', label: 'SEO & AI' },
-  { href: '/services/automation', label: 'Automation' },
-  { href: '/case-studies', label: 'Case Studies' },
+  { href: '/#detail-web', label: 'Web' },
+  { href: '/#detail-social', label: 'Social' },
+  { href: '/#detail-seo', label: 'SEO & AI' },
+  { href: '/#section-cases', label: 'Work' },
   { href: '/#contact', label: 'Contact' },
 ];
 ---
@@ -34,6 +33,7 @@ const navLinks = [
       {navLinks.map(link => (
         <a href={link.href} class="site-nav__link">{link.label}</a>
       ))}
+      <a href="/#contact" class="site-nav__cta">Start a Project</a>
     </div>
   </nav>
 </header>
@@ -122,6 +122,26 @@ const navLinks = [
 
   .site-nav__link:hover {
     color: var(--fg);
+  }
+
+  .site-nav__cta {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fff;
+    background: var(--red);
+    border: 1px solid var(--red);
+    border-radius: 6px;
+    padding: 0.45rem 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+
+  .site-nav__cta:hover {
+    background: transparent;
+    color: var(--red);
   }
 
   @media (max-width: 700px) {

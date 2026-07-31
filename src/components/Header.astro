@@ -11,19 +11,24 @@ const navLinks = [
 
 <header class="site-header">
   <nav class="site-nav">
-    <a href="/" class="site-nav__brand">
-      <svg class="site-nav__moon" viewBox="0 0 400 400" width="28" height="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <defs>
-          <mask id="header-mask">
-            <rect width="400" height="400" fill="black"/>
-            <circle cx="200" cy="200" r="185" fill="white"/>
-            <circle cx="288" cy="200" r="130" fill="black"/>
-          </mask>
-        </defs>
-        <image xlink:href="/Crescent-Moon-Design/moon.webp" x="15" y="15" width="370" height="370"
-               preserveAspectRatio="xMidYMid slice" mask="url(#header-mask)"/>
-      </svg>
-      Crescent Moon Design
+    <a href="/" class="site-nav__brand" aria-label="Crescent Moon Design — home">
+      <span class="brand-mark">
+        <svg class="site-nav__moon" viewBox="0 0 400 400" width="64" height="64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <defs>
+            <mask id="header-mask">
+              <rect width="400" height="400" fill="black"/>
+              <circle cx="200" cy="200" r="185" fill="white"/>
+              <circle cx="288" cy="200" r="130" fill="black"/>
+            </mask>
+          </defs>
+          <image xlink:href="/Crescent-Moon-Design/moon.webp" x="15" y="15" width="370" height="370"
+                 preserveAspectRatio="xMidYMid slice" mask="url(#header-mask)"/>
+        </svg>
+        <span class="brand-text">
+          Crescent Moon
+          <span class="brand-text__sub">Design</span>
+        </span>
+      </span>
     </a>
     <div class="site-nav__links">
       {navLinks.map(link => (
@@ -51,24 +56,52 @@ const navLinks = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 56px;
+    height: 64px;
   }
 
   .site-nav__brand {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 700;
-    font-size: 0.88rem;
+    display: block;
     color: var(--fg);
     text-decoration: none;
-    letter-spacing: -0.01em;
+  }
+
+  .brand-mark {
+    position: relative;
+    display: inline-block;
+    width: 64px;
+    height: 64px;
   }
 
   .site-nav__moon {
-    flex-shrink: 0;
+    display: block;
     border-radius: 50%;
     overflow: hidden;
+    filter: drop-shadow(0 0 14px rgba(230, 57, 70, 0.25));
+  }
+
+  /* Text nestled inside the crescent opening (the concave space of the moon) */
+  .brand-text {
+    position: absolute;
+    left: 39%;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+    pointer-events: none;
+  }
+
+  .brand-text__sub {
+    display: block;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 1px;
   }
 
   .site-nav__links {

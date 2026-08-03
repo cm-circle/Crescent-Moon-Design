@@ -35,21 +35,22 @@ const cases = await getCollection('caseStudies');
           </mask>
         </defs>
         <image class="moon-img" xlink:href="/Crescent-Moon-Design/moon.webp"
-               x="15" y="15" width="370" height="370"
-               preserveAspectRatio="xMidYMid slice"
-               mask="url(#eclipse-mask)"/>
-      </svg>
-    </div>
-    <div class="hero__text">
-      <h1 class="hero__title agency-name">Crescent Moon Design</h1>
-      <p class="hero__tagline tagline">We craft digital experiences that eclipse the ordinary</p>
-      <p class="hero__services services-intro">Web Design &bull; Social Media &bull; SEO / GEO</p>
-    </div>
-    <div class="hero__scroll-cue">
-      <span class="hero__scroll-text">Scroll</span>
-      <span class="hero__scroll-arrow">↓</span>
-    </div>
-  </section>
+                       x="15" y="15" width="370" height="370"
+                       preserveAspectRatio="xMidYMid slice"
+                       mask="url(#eclipse-mask)"/>
+              </svg>
+
+              <div class="hero__text">
+                <h1 class="hero__title agency-name">Crescent Moon Design</h1>
+                <p class="hero__tagline tagline">We craft digital experiences that eclipse the ordinary</p>
+                <p class="hero__services services-intro">Web Design &bull; Social Media &bull; SEO / GEO</p>
+              </div>
+            </div>
+            <div class="hero__scroll-cue">
+              <span class="hero__scroll-text">Scroll</span>
+              <span class="hero__scroll-arrow">↓</span>
+            </div>
+          </section>
 
   <!-- Metrics strip -->
   <div class="metrics-strip">
@@ -471,7 +472,7 @@ const cases = await getCollection('caseStudies');
     opacity: 0; pointer-events: none;
   }
   .hero__text {
-    position: absolute; z-index: 2; left: 18%; top: 50%;
+    position: absolute; z-index: 3; left: 6%; top: 50%;
     transform: translateY(-50%) translateX(60px); opacity: 0; text-align: left; white-space: nowrap;
   }
   .hero__title { font-size: clamp(2.7rem, 4.8vw, 4.5rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 0.9rem; color: var(--fg); }
@@ -702,17 +703,17 @@ const cases = await getCollection('caseStudies');
 
   /* === RESPONSIVE === */
   @media (max-width: 900px) {
-    .service-detail__inner { grid-template-columns: 1fr; gap: 2rem; }
-    .case-cards { grid-template-columns: 1fr; }
-    .process-grid { grid-template-columns: 1fr 1fr; }
-    .hero__text { left: 35%; }
-  }
-  @media (max-width: 700px) {
-    .hero { flex-direction: column; justify-content: center; padding: 2rem 1rem; }
-    .hero__moon-container { margin-left: 0; width: clamp(280px, 85vw, 480px); height: clamp(280px, 85vw, 480px); }
-    .hero__text { position: relative; left: auto; top: auto; transform: none; max-width: 100%; margin: 1.5rem auto 0; text-align: center; white-space: normal; }
-    .process-grid { grid-template-columns: 1fr; }
-    .service-detail { padding: 3rem 0; }
+      .service-detail__inner { grid-template-columns: 1fr; gap: 2rem; }
+      .case-cards { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      /* Too small to keep text + moon side by side — stack text under the moon */
+      .hero { flex-direction: column; justify-content: center; padding: 2rem 1rem; }
+      .hero__moon-container { margin-left: 0; width: clamp(300px, 70vw, 520px); height: clamp(300px, 70vw, 520px); }
+      .hero__text { position: relative; left: 0; top: auto; transform: none; max-width: 100%; margin: 1.5rem auto 0; text-align: center; white-space: normal; }
+    }
+    @media (max-width: 700px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .service-detail { padding: 3rem 0; }
   }
   @media (prefers-reduced-motion: reduce) {
     .hero__scroll-arrow { animation: none; }

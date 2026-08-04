@@ -62,15 +62,6 @@ const cases = await getCollection('caseStudies');
     </div>
   </div>
 
-  <!-- Island Navigation -->
-  <nav class="island-nav">
-    <div class="nav-indicator"></div>
-    <a class="nav-item active" href="#detail-web">Web Design</a>
-    <a class="nav-item" href="#detail-social">Social Media</a>
-    <a class="nav-item" href="#detail-seo">SEO / GEO</a>
-    <a class="nav-item" href="#section-cases">Case Studies</a>
-  </nav>
-
   <!-- Service Detail Rail -->
   <section class="service-detail active" id="detail-web">
     <div class="service-detail__inner">
@@ -387,43 +378,17 @@ const cases = await getCollection('caseStudies');
       opacity: 1, scale: 1, ease: 'none'
     });
 
-    // Phase 5: Island nav slides in
-    gsap.to('.island-nav', {
-      scrollTrigger: { trigger: '.hero', start: '70% top', end: '90% top', scrub: 1 },
-      y: 0, opacity: 1, ease: 'none'
-    });
-
-    // Service detail scroll-spy: highlight active, fade others
+    // Service detail scroll-spy: fade active, dim others
     var detailSections = document.querySelectorAll('.service-detail');
-    var navItems = document.querySelectorAll('.island-nav .nav-item');
-    var indicator = document.querySelector('.nav-indicator');
-
-    function moveIndicator(el) {
-      gsap.to(indicator, { x: el.offsetLeft, width: el.offsetWidth, duration: 0.4, ease: 'power3.out' });
-    }
-    moveIndicator(navItems[0]);
-
-    navItems.forEach(function(item) {
-      item.addEventListener('click', function(e) {
-        e.preventDefault();
-        var target = document.querySelector(item.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
-    });
-
     var sections = document.querySelectorAll('.service-detail');
     sections.forEach(function(section, i) {
       ScrollTrigger.create({
         trigger: section, start: 'top center', end: 'bottom center',
         onEnter: function() {
-          navItems.forEach(function(n) { n.classList.remove('active'); });
-          if (navItems[i]) { navItems[i].classList.add('active'); moveIndicator(navItems[i]); }
           gsap.to(section, { opacity: 1, duration: 0.4 });
           detailSections.forEach(function(s, j) { if (j !== i) gsap.to(s, { opacity: 0.15, duration: 0.4 }); });
         },
         onEnterBack: function() {
-          navItems.forEach(function(n) { n.classList.remove('active'); });
-          if (navItems[i]) { navItems[i].classList.add('active'); moveIndicator(navItems[i]); }
           gsap.to(section, { opacity: 1, duration: 0.4 });
           detailSections.forEach(function(s, j) { if (j !== i) gsap.to(s, { opacity: 0.15, duration: 0.4 }); });
         }
@@ -518,26 +483,6 @@ const cases = await getCollection('caseStudies');
     z-index: 100; opacity: 0; transform: scale(0.5); pointer-events: none;
   }
   .moon-dock svg { width: 100%; height: 100%; }
-
-  /* === ISLAND NAV === */
-  .island-nav {
-    position: fixed; top: 72px; left: 50%; transform: translateX(-50%) translateY(-80px);
-    z-index: 100; display: flex; align-items: center; gap: 0;
-    background: rgba(10, 10, 18, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; padding: 6px 8px; opacity: 0;
-  }
-  .island-nav .nav-item {
-    position: relative; padding: 10px 20px; font-size: 0.8rem; font-weight: 500;
-    text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted);
-    text-decoration: none; white-space: nowrap; transition: color 0.3s ease; cursor: pointer;
-  }
-  .island-nav .nav-item.active { color: var(--fg); }
-  .nav-indicator {
-    position: absolute; top: 50%; left: 0; height: calc(100% - 12px);
-    transform: translateY(-50%); background: rgba(230, 57, 70, 0.15);
-    border: 1px solid var(--red); border-radius: 30px; transition: none;
-    pointer-events: none; z-index: -1;
-  }
 
   /* === SERVICE DETAIL RAIL === */
   .service-detail {
@@ -717,7 +662,7 @@ const cases = await getCollection('caseStudies');
   }
   @media (prefers-reduced-motion: reduce) {
     .hero__scroll-arrow { animation: none; }
-    .hero__moon-svg, .hero__moon-glow, .hero__text, .moon-dock, .island-nav { opacity: 1 !important; transform: none !important; }
+    .hero__moon-svg, .hero__moon-glow, .hero__text, .moon-dock { opacity: 1 !important; transform: none !important; }
     .agency-name .char, .tagline .word, .services-intro .char { opacity: 1 !important; transform: none !important; }
     .service-detail { opacity: 1 !important; }
   }

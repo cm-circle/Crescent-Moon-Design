@@ -1,11 +1,5 @@
 ---
-const navLinks = [
-  { href: '/#detail-web', label: 'Web' },
-  { href: '/#detail-social', label: 'Social' },
-  { href: '/#detail-seo', label: 'SEO & AI' },
-  { href: '/#section-cases', label: 'Work' },
-  { href: '/#contact', label: 'Contact' },
-];
+const navLinks = [];
 ---
 
 <header class="site-header">
@@ -33,7 +27,7 @@ const navLinks = [
       {navLinks.map(link => (
         <a href={link.href} class="site-nav__link">{link.label}</a>
       ))}
-      <a href="/#contact" class="site-nav__cta">Start a Project</a>
+      <a href="mailto:hello@crescentmoondesign.com" class="site-nav__cta">Start a Project</a>
     </div>
   </nav>
 </header>

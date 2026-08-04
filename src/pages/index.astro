@@ -48,6 +48,108 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </section>
 
+  <!-- Services Grid (3 columns) -->
+  <section class="services-grid" id="services">
+    <div class="wrap">
+      <h2 class="section__title">What we do</h2>
+      <div class="services-grid__inner">
+        <article class="service-col">
+          <div class="service-col__number">01</div>
+          <h3 class="service-col__title">Web Design</h3>
+          <p class="service-col__tagline">Sites that pull their weight</p>
+          <ul class="service-col__list">
+            <li><strong>Clear offer</strong> — every page has a job and does it</li>
+            <li><strong>Mobile-first</strong> — built for thumbs first, cursors second</li>
+            <li><strong>Fast pages</strong> — sub-second first paint, no excuses</li>
+            <li><strong>Easy edits</strong> — you own your content, not a plugin</li>
+            <li><strong>Accessible</strong> — WCAG 2.1 AA, built in from the start</li>
+          </ul>
+          <a href="/#contact" class="service-col__link">Details →</a>
+        </article>
+        <article class="service-col">
+          <div class="service-col__number">02</div>
+          <h3 class="service-col__title">Social Media</h3>
+          <p class="service-col__tagline">Content with gravitational pull</p>
+          <ul class="service-col__list">
+            <li><strong>Platform-native</strong> — each channel gets what it needs</li>
+            <li><strong>Monthly calendars</strong> — consistent, zero panic posting</li>
+            <li><strong>Brand voice</strong> — defined once, used everywhere</li>
+            <li><strong>Community</strong> — engagement that builds loyalty</li>
+            <li><strong>Reporting</strong> — know what's working, kill what isn't</li>
+          </ul>
+          <a href="/#contact" class="service-col__link">Details →</a>
+        </article>
+        <article class="service-col">
+          <div class="service-col__number">03</div>
+          <h3 class="service-col__title">SEO / GEO</h3>
+          <p class="service-col__tagline">Found by the right people</p>
+          <ul class="service-col__list">
+            <li><strong>Technical audits</strong> — find and fix what's blocking you</li>
+            <li><strong>Local SEO</strong> — dominate your zip code</li>
+            <li><strong>Content architecture</strong> — structure search engines reward</li>
+            <li><strong>GEO</strong> — optimized for AI answer engines</li>
+            <li><strong>Link building</strong> — earn the trust that rankings measure</li>
+          </ul>
+          <a href="/#contact" class="service-col__link">Details →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process (4 steps) -->
+  <section class="process" id="process">
+    <div class="wrap">
+      <h2 class="section__title">How it works</h2>
+      <div class="process-grid">
+        <div class="process-step">
+          <span class="process-step__num">01</span>
+          <h3 class="process-step__title">Find the friction</h3>
+          <p class="process-step__desc">A short call to locate the leak in your funnel.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">02</span>
+          <h3 class="process-step__title">Make the plan</h3>
+          <p class="process-step__desc">A fixed-price roadmap with no surprise invoices.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">03</span>
+          <h3 class="process-step__title">Build the useful thing</h3>
+          <p class="process-step__desc">Ships fast, works on every screen, is easy to edit.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">04</span>
+          <h3 class="process-step__title">Measure and refine</h3>
+          <p class="process-step__desc">We track what happens after launch and keep improving.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Automation -->
+  <section class="automation" id="automation">
+    <div class="wrap">
+      <div class="automation__inner">
+        <div class="automation__copy">
+          <h2 class="automation__title">The back office can do more</h2>
+          <p class="automation__desc">Custom code and AI workflows for the busy-work that eats your week.</p>
+        </div>
+        <a href="/#contact" class="btn btn--primary automation__cta">Explore Automation →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Primary CTA -->
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <h2 class="cta__title">Have a project that needs to pull its weight?</h2>
+      <p class="cta__desc">Tell us what is not working. We will help map a useful next step.</p>
+      <div class="cta__footer">
+        <a href="mailto:hello@crescentmoondesign.com" class="btn btn--primary">Start a Conversation →</a>
+        <span class="cta-location">Based in Portola, CA — working nationwide</span>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>
 
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -97,6 +199,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     gsap.to('.moon-dock', {
       scrollTrigger: { trigger: '.hero', start: '75% top', end: 'bottom top', scrub: 1 },
       opacity: 1, scale: 1, ease: 'none'
+    });
+
+    // Scroll-reveal for sections below hero
+    gsap.utils.toArray('.service-col, .process-step, .automation, .cta').forEach(function(el) {
+      gsap.fromTo(el, { opacity: 0, y: 40 }, {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none reverse' }
+      });
     });
   }
   if (typeof gsap !== 'undefined') { tryInit(); }
@@ -161,6 +271,206 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .moon-dock svg { width: 100%; height: 100%; }
 
+  /* === WRAP === */
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+  /* === SERVICES GRID === */
+  .services-grid {
+    background: var(--bg-solid);
+    padding: 6rem 0;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .section__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--fg);
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  .services-grid__inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .service-col {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .service-col:hover {
+    border-color: rgba(230,57,70,0.4);
+    background: rgba(230,57,70,0.03);
+  }
+  .service-col__number {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--red);
+    margin-bottom: 0.75rem;
+  }
+  .service-col__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--fg);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .service-col__tagline {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  .service-col__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    flex: 1;
+  }
+  .service-col__list li {
+    font-size: 0.9rem;
+    color: var(--fg);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+  .service-col__list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+  .service-col__list li strong {
+    color: var(--fg);
+  }
+  .service-col__link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s;
+    align-self: flex-start;
+  }
+  .service-col__link:hover { color: var(--red); }
+
+  /* === PROCESS === */
+  .process {
+    background: var(--bg);
+    padding: 6rem 0;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .process-step {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .process-step:hover {
+    border-color: rgba(230,57,70,0.4);
+    background: rgba(230,57,70,0.03);
+  }
+  .process-step__num {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--red);
+    margin-bottom: 1rem;
+  }
+  .process-step__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--fg);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+  .process-step__desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* === AUTOMATION === */
+  .automation {
+    background: var(--bg-solid);
+    padding: 5rem 0;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .automation__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .automation__title {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--fg);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .automation__desc {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .automation__cta { flex-shrink: 0; }
+
+  /* === CTA === */
+  .cta {
+    background: var(--bg-solid);
+    padding: 6rem 0;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    text-align: center;
+  }
+  .cta__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--fg);
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+  .cta__desc {
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+  .cta__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .cta-location {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
   /* === BUTTONS === */
   .btn { display: inline-block; padding: 0.9rem 2rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; cursor: pointer; }
   .btn--primary { background: var(--red); color: #fff; border: 1px solid var(--red); }
@@ -179,7 +489,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       .hero { flex-direction: column; justify-content: center; padding: 2rem 1rem; }
       .hero__moon-container { margin-left: 0; width: clamp(300px, 70vw, 520px); height: clamp(300px, 70vw, 520px); }
       .hero__text { position: relative; left: 0; top: auto; transform: none; max-width: 100%; margin: 1.5rem auto 0; text-align: center; white-space: normal; }
-    }
+      .services-grid__inner { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .automation__inner { flex-direction: column; text-align: center; }
+      .automation__cta { width: 100%; text-align: center; }
+  }
+  @media (max-width: 600px) {
+      .process-grid { grid-template-columns: 1fr; }
+  }
   @media (prefers-reduced-motion: reduce) {
     .hero__moon-svg, .hero__moon-glow, .hero__text, .moon-dock { opacity: 1 !important; transform: none !important; }
     .agency-name .char, .tagline .word, .services-intro .char { opacity: 1 !important; transform: none !important; }

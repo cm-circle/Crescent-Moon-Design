@@ -48,7 +48,6 @@ const cases = await getCollection('caseStudies');
             </div>
             <div class="hero__scroll-cue">
               <span class="hero__scroll-text">Scroll</span>
-              <span class="hero__scroll-arrow">↓</span>
             </div>
           </section>
 
@@ -447,8 +446,7 @@ const cases = await getCollection('caseStudies');
     position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 0.4rem; z-index: 2;
   }
-  .hero__scroll-text { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); }
-  .hero__scroll-arrow { font-size: 1.1rem; color: var(--accent); animation: bounce 1.8s ease-in-out infinite; }
+  .hero__scroll-text { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.22em; color: var(--muted); }
   @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
   /* === METRICS STRIP === */
@@ -661,7 +659,6 @@ const cases = await getCollection('caseStudies');
       .service-detail { padding: 3rem 0; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .hero__scroll-arrow { animation: none; }
     .hero__moon-svg, .hero__moon-glow, .hero__text, .moon-dock { opacity: 1 !important; transform: none !important; }
     .agency-name .char, .tagline .word, .services-intro .char { opacity: 1 !important; transform: none !important; }
     .service-detail { opacity: 1 !important; }

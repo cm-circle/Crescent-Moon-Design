@@ -1,52 +1,56 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Crescent Moon Design — We craft digital experiences that eclipse the ordinary.">
 
-  <!-- Docked moon logo -->
-  <div class="moon-dock">
+  <!-- Docked moon logo (decorative) -->
+  <div class="moon-dock" aria-hidden="true">
     <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
-        <mask id="dock-mask">
+        <mask id="dock-mask-hero">
           <rect width="400" height="400" fill="black"/>
           <circle cx="200" cy="200" r="185" fill="white"/>
           <circle cx="288" cy="200" r="130" fill="black"/>
         </mask>
       </defs>
-      <image xlink:href="/Crescent-Moon-Design/moon.webp" x="15" y="15" width="370" height="370"
-             preserveAspectRatio="xMidYMid slice" mask="url(#dock-mask)"/>
+      <title>Crescent Moon Design logo</title>
+      <image xlink:href={`${base}moon.webp`} fetchpriority="high" loading="eager" x="15" y="15" width="370" height="370"
+             preserveAspectRatio="xMidYMid slice" mask="url(#dock-mask-hero)"/>
     </svg>
   </div>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero__moon-container">
-      <div class="hero__moon-glow"></div>
-      <svg class="hero__moon-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <defs>
-          <mask id="eclipse-mask">
-            <rect width="400" height="400" fill="black"/>
-            <circle cx="200" cy="200" r="185" fill="white"/>
-            <circle class="eclipse-shadow" cx="620" cy="200" r="130" fill="black"/>
-          </mask>
-        </defs>
-        <image class="moon-img" xlink:href="/Crescent-Moon-Design/moon.webp"
-                       x="15" y="15" width="370" height="370"
-                       preserveAspectRatio="xMidYMid slice"
-                       mask="url(#eclipse-mask)"/>
-              </svg>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero__moon-container">
+          <div class="hero__moon-glow"></div>
+          <svg class="hero__moon-svg" viewBox="0 0 400 400" role="img" aria-label="Crescent moon with eclipse animation" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+              <mask id="eclipse-mask">
+                <rect width="400" height="400" fill="black"/>
+                <circle cx="200" cy="200" r="185" fill="white"/>
+                <circle class="eclipse-shadow" cx="620" cy="200" r="130" fill="black"/>
+              </mask>
+            </defs>
+            <title>Crescent moon with eclipse animation</title>
+            <image class="moon-img" xlink:href={`${base}moon.webp`} fetchpriority="high" loading="eager"
+                           x="15" y="15" width="370" height="370"
+                           preserveAspectRatio="xMidYMid slice"
+                           mask="url(#eclipse-mask)"/>
+                  </svg>
 
-              <div class="hero__text">
-                <h1 class="hero__title agency-name">Crescent Moon Design</h1>
-                <p class="hero__tagline tagline">We craft digital experiences that eclipse the ordinary</p>
-                <p class="hero__services services-intro">Web Design &bull; Social Media &bull; SEO / GEO</p>
-              </div>
-            </div>
-            <div class="hero__scroll-cue">
-              <span class="hero__scroll-text">Scroll</span>
-            </div>
-          </section>
+                  <div class="hero__text">
+                    <h1 class="hero__title agency-name">Crescent Moon Design</h1>
+                    <p class="hero__tagline tagline">We craft digital experiences that eclipse the ordinary</p>
+                    <p class="hero__services services-intro">Web Design &bull; Social Media &bull; SEO / GEO</p>
+                  </div>
+                </div>
+                <div class="hero__scroll-cue" aria-hidden="true">
+                  <span class="hero__scroll-text">Scroll</span>
+                  <span class="hero__scroll-arrow">↓</span>
+                </div>
+              </section>
 
   <!-- Services Grid (3 columns) -->
   <section class="services-grid" id="services">
@@ -64,7 +68,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <li><strong>Easy edits</strong> — you own your content, not a plugin</li>
             <li><strong>Accessible</strong> — WCAG 2.1 AA, built in from the start</li>
           </ul>
-          <a href="/#contact" class="service-col__link">Details →</a>
+          <a href="/services" class="service-col__link">Learn more →</a>
         </article>
         <article class="service-col">
           <div class="service-col__number">02</div>
@@ -77,7 +81,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <li><strong>Community</strong> — engagement that builds loyalty</li>
             <li><strong>Reporting</strong> — know what's working, kill what isn't</li>
           </ul>
-          <a href="/#contact" class="service-col__link">Details →</a>
+          <a href="/services" class="service-col__link">Learn more →</a>
         </article>
         <article class="service-col">
           <div class="service-col__number">03</div>
@@ -90,7 +94,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <li><strong>GEO</strong> — optimized for AI answer engines</li>
             <li><strong>Link building</strong> — earn the trust that rankings measure</li>
           </ul>
-          <a href="/#contact" class="service-col__link">Details →</a>
+          <a href="/services" class="service-col__link">Learn more →</a>
         </article>
       </div>
     </div>
@@ -134,6 +138,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p class="automation__desc">Custom code and AI workflows for the busy-work that eats your week.</p>
         </div>
         <a href="/#contact" class="btn btn--primary automation__cta">Explore Automation →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section class="case-studies" id="work">
+    <div class="wrap">
+      <h2 class="section__title">Recent work</h2>
+      <div class="case-studies__grid">
+        <a href="/case-studies/brookline-property" class="case-card">
+          <span class="case-card__tag">Web Design</span>
+          <h3 class="case-card__title">Brookline Property Group</h3>
+          <p class="case-card__desc">Real estate site redesign with 340% organic traffic increase</p>
+        </a>
+        <a href="/case-studies/harrison-mcphee" class="case-card">
+          <span class="case-card__tag">Social Media</span>
+          <h3 class="case-card__title">Harrison & McPhee</h3>
+          <p class="case-card__desc">Brand strategy and social presence overhaul</p>
+        </a>
+        <a href="/case-studies/holliston-ag" class="case-card">
+          <span class="case-card__tag">SEO / GEO</span>
+          <h3 class="case-card__title">Holliston Agricultural</h3>
+          <p class="case-card__desc">Local SEO dominance — 92 Lighthouse score</p>
+        </a>
+      </div>
+      <div class="case-studies__cta">
+        <a href="/case-studies" class="btn btn--ghost">View all work →</a>
       </div>
     </div>
   </section>
@@ -252,7 +283,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .hero__text {
       position: absolute; z-index: 3; left: 42%; top: 50%;
-      transform: translateY(-50%) translateX(60px); opacity: 0; text-align: left; white-space: nowrap;
+      transform: translateY(-50%) translateX(60px); opacity: 0; text-align: left; white-space: normal; max-width: 92vw;
     }
   .hero__title { font-size: clamp(2.7rem, 4.8vw, 4.5rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 0.9rem; color: var(--fg); }
   .hero__tagline { font-size: clamp(1.28rem, 2.1vw, 1.65rem); font-weight: 300; color: var(--accent); margin-bottom: 1.4rem; letter-spacing: 0.01em; line-height: 1.5; }
@@ -262,6 +293,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: flex; flex-direction: column; align-items: center; gap: 0.4rem; z-index: 2;
   }
   .hero__scroll-text { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.22em; color: var(--muted); }
+  .hero__scroll-arrow { font-size: 1rem; color: var(--muted); animation: bounce 1.5s infinite; }
   @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
   /* === DOCKED MOON === */
@@ -342,7 +374,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: relative;
   }
   .service-col__list li::before {
-    content: '✦';
+    /* decorative */ content: '';
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    display: inline-block;
     position: absolute;
     left: 0;
     color: var(--accent);
@@ -436,6 +470,57 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .automation__cta { flex-shrink: 0; }
 
+  /* === CASE STUDIES === */
+  .case-studies {
+    padding: 6rem 0;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .case-studies__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .case-card {
+    display: block;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    transition: border-color 0.3s, background 0.3s, transform 0.2s;
+  }
+  .case-card:hover {
+    border-color: rgba(230,57,70,0.4);
+    background: rgba(230,57,70,0.03);
+    transform: translateY(-3px);
+  }
+  .case-card__tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--red);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .case-card__title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--fg);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .case-card__desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .case-studies__cta {
+    text-align: center;
+  }
+
   /* === CTA === */
   .cta {
     background: var(--bg-solid);
@@ -475,8 +560,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .btn { display: inline-block; padding: 0.9rem 2rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; cursor: pointer; }
   .btn--primary { background: var(--red); color: #fff; border: 1px solid var(--red); }
   .btn--primary:hover { background: transparent; color: var(--red); }
-  .btn--outline-teal { background: transparent; color: var(--blue); border: 1px solid var(--blue); }
-  .btn--outline-teal:hover { background: rgba(46,196,182,0.1); }
 
   /* === SplitType === */
   .agency-name .char { display: inline-block; opacity: 0; transform: translateX(30px); }

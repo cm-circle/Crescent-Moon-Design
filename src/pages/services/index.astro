@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Services — Crescent Moon Design">
+  <section class="services-hero">
+    <div class="wrap">
+      <h1 class="services-hero__title">What we do</h1>
+      <p class="services-hero__tagline">We craft digital experiences that pull their weight — fast, accessible, and unmistakably yours.</p>
+    </div>
+  </section>
+
+  <section class="services-detail" id="services-web">
+    <div class="wrap">
+      <div class="service-detail">
+        <div class="service-detail__header">
+          <span class="service-detail__number">01</span>
+          <h2 class="service-detail__title">Web Design</h2>
+          <p class="service-detail__tagline">Sites that pull their weight</p>
+        </div>
+        <div class="service-detail__content">
+          <p>High-performance, responsive builds engineered for speed and story. We design and develop sites that convert visitors into believers — accessible, fast, and unmistakably yours.</p>
+          <ul class="service-detail__list">
+            <li><strong>Clear offer</strong> — every page has a job and does it</li>
+            <li><strong>Mobile-first</strong> — built for thumbs first, cursors second</li>
+            <li><strong>Fast pages</strong> — sub-second first paint, no excuses</li>
+            <li><strong>Easy edits</strong> — you own your content, not a plugin</li>
+            <li><strong>Accessible</strong> — WCAG 2.1 AA, built in from the start</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-detail services-detail--alt" id="services-social">
+    <div class="wrap">
+      <div class="service-detail">
+        <div class="service-detail__header">
+          <span class="service-detail__number">02</span>
+          <h2 class="service-detail__title">Social Media</h2>
+          <p class="service-detail__tagline">Content with gravitational pull</p>
+        </div>
+        <div class="service-detail__content">
+          <p>Strategy, calendars, and creative that keep your audience in orbit. We build presence across platforms with consistent voice, visual identity, and measurable growth.</p>
+          <ul class="service-detail__list">
+            <li><strong>Platform-native</strong> — each channel gets what it needs</li>
+            <li><strong>Monthly calendars</strong> — consistent, zero panic posting</li>
+            <li><strong>Brand voice</strong> — defined once, used everywhere</li>
+            <li><strong>Community</strong> — engagement that builds loyalty</li>
+            <li><strong>Reporting</strong> — know what's working, kill what isn't</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-detail" id="services-seo">
+    <div class="wrap">
+      <div class="service-detail">
+        <div class="service-detail__header">
+          <span class="service-detail__number">03</span>
+          <h2 class="service-detail__title">SEO / GEO</h2>
+          <p class="service-detail__tagline">Found by the right people</p>
+        </div>
+        <div class="service-detail__content">
+          <p>Search and generative engine optimization that maps the trajectory from first query to lasting loyalty. Technical audits, content architecture, and local visibility.</p>
+          <ul class="service-detail__list">
+            <li><strong>Technical audits</strong> — find and fix what's blocking you</li>
+            <li><strong>Local SEO</strong> — dominate your zip code</li>
+            <li><strong>Content architecture</strong> — structure search engines reward</li>
+            <li><strong>GEO</strong> — optimized for AI answer engines</li>
+            <li><strong>Link building</strong> — earn the trust that rankings measure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="cta__title">Have a project that needs to pull its weight?</h2>
+      <p class="cta__desc">Tell us what is not working. We will help map a useful next step.</p>
+      <a href="mailto:hello@crescentmoondesign.com" class="btn btn--primary">Start a Conversation →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .services-hero {
+    padding: 8rem 0 4rem;
+    text-align: center;
+  }
+  .services-hero__title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+  .services-hero__tagline {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .services-detail {
+    padding: 5rem 0;
+  }
+  .services-detail--alt {
+    background: var(--bg-solid);
+  }
+  .service-detail {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .service-detail__number {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--red);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .service-detail__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+  }
+  .service-detail__tagline {
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .service-detail__content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .service-detail__list {
+    list-style: none;
+    padding: 0;
+  }
+  .service-detail__list li {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+  .service-detail__list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+  }
+  .service-detail__list li strong {
+    color: var(--fg);
+  }
+  .cta {
+    padding: 6rem 0;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .cta__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+  .cta__desc {
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>

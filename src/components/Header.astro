@@ -1,12 +1,18 @@
 ---
-const navLinks = [];
+const navLinks = [
+  { href: '/#services', label: 'Services' },
+  { href: '/#process', label: 'Process' },
+  { href: '/#automation', label: 'Automation' },
+  { href: '/case-studies', label: 'Work' }
+];
+const base = import.meta.env.BASE_URL;
 ---
 
 <header class="site-header">
   <nav class="site-nav">
-    <a href="/" class="site-nav__brand" aria-label="Crescent Moon Design — home">
+    <a href="/" class="site-nav__brand" aria-label="Crescent Moon — home">
       <span class="brand-mark">
-        <svg class="site-nav__moon" viewBox="0 0 400 400" width="64" height="64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg class="site-nav__moon" viewBox="0 0 400 400" width="64" height="64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs>
             <mask id="header-mask">
               <rect width="400" height="400" fill="black"/>
@@ -14,7 +20,7 @@ const navLinks = [];
               <circle cx="288" cy="200" r="130" fill="black"/>
             </mask>
           </defs>
-          <image xlink:href="/Crescent-Moon-Design/moon.webp" x="15" y="15" width="370" height="370"
+          <image xlink:href={`${base}moon.webp`} x="15" y="15" width="370" height="370"
                  preserveAspectRatio="xMidYMid slice" mask="url(#header-mask)"/>
         </svg>
         <span class="brand-text">
@@ -118,6 +124,15 @@ const navLinks = [];
     color: var(--fg);
   }
 
+  /* Focus-visible ring for keyboard navigation */
+  .site-nav__brand:focus-visible,
+  .site-nav__link:focus-visible,
+  .site-nav__cta:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
   .site-nav__cta {
     font-size: 0.72rem;
     font-weight: 600;
@@ -139,8 +154,8 @@ const navLinks = [];
   }
 
   @media (max-width: 700px) {
-    .site-nav__links {
-      display: none;
-    }
+    /* Keep only CTA visible; hide decorative nav links instead of removing all access */
+    .site-nav__links .site-nav__link { display: none; }
+    .site-nav__cta { font-size: 0.62rem; padding: 0.35rem 0.6rem; }
   }
 </style>

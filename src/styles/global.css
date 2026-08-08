@@ -9,7 +9,7 @@
   --bg-solid: #0b0b12;
   --fg: #f0ece2;
   --accent: #c9b99a;
-  --muted: #7a7585;
+  --muted: #a8a3b3;
   --glow: rgba(201, 185, 154, 0.12);
   --red: #e63946;
   --blue: #2ec4b6;
@@ -99,6 +99,20 @@ p {
 p strong {
   color: var(--fg);
   font-weight: 600;
+}
+
+/* Button/link focus rings */
+.btn:focus-visible,
+a:focus-visible,
+button:focus-visible,
+.service-col__link:focus-visible,
+.automation__cta:focus-visible,
+.site-nav__cta:focus-visible,
+.site-nav__brand:focus-visible,
+.site-nav__link:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+  border-radius: var(--border-radius);
 }
 
 /* ---------- Utility Classes ---------- */
@@ -260,8 +274,7 @@ p strong {
   font-weight: 600;
 }
 
-/* ---- Force service sections visible ---- */
+/* ---- legacy .section-panel cleanup (was forcing unwanted solid bg) ---- */
 .section-panel {
-  background: #0f0f19d9 !important;
-  border: 3px solid #e63946 !important;
+  /* no-op: kept for compatibility; remove all hard styles */
 }

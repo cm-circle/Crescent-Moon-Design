@@ -9,9 +9,11 @@ interface Props {
 }
 
 const { title, client, tagline, category, stats, slug } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const href = `${base}case-studies/${slug}`;
 ---
 
-<a href={`/case-studies/${slug}`} class="case-card">
+<a href={href} class="case-card">
   <span class="case-card__category">{category}</span>
   <h3 class="case-card__title">{title}</h3>
   <p class="case-card__tagline">{tagline}</p>

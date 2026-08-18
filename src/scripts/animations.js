@@ -1,86 +1,65 @@
-// GSAP animations for Crescent Moon Design landing page
-// Loaded conditionally — only runs if GSAP is available and user hasn't opted out of motion
+// GSAP + SplitType animations for the Crescent Moon Design landing page.
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function initAnimations() {
-  // Bail if user prefers reduced motion
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    // Show all elements immediately for reduced motion users
-    document.querySelectorAll('.hero__text').forEach(el => {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    });
+    document.documentElement.classList.add('reduced-motion');
     return;
   }
-
-  // Wait for GSAP to load
-  if (typeof gsap === 'undefined') {
-    // Fallback: show elements without animation
-    document.querySelectorAll('.hero__text').forEach(el => {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    });
-    return;
-  }
-
-  gsap.registerPlugin(ScrollTrigger);
 
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
   // Phase 1: Moon entrance
-  tl.fromTo('.hero__moon-svg',
-    { scale: 0.9, opacity: 0 },
-    { scale: 1, opacity: 1, duration: 1.2, ease: 'power2.out' }
-  );
+  tl.fromTo('.hero__moon-svg', { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: 'power2.out' });
   tl.to('.hero__moon-glow', { opacity: 1, duration: 0.8, ease: 'sine.inOut' }, '-=0.4');
   tl.to({}, { duration: 0.5 });
 
-  // Phase 2: Eclipse + text reveal
+  // Phase 2: Eclipse + text sweep
   const sweepDur = 2.4;
   const sweepEase = 'power2.inOut';
+  tl.to('.eclipse-shadow', { attr: { cx: 288 }, duration: sweepDur, ease: sweepEase });
+  tl.fromTo('.hero__text', { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: sweepDur * 0.8, ease: sweepEase }, '-=0.6');
+  tl.to('.hero__moon-glow', { opacity: 0.3, duration: sweepDur, ease: 'sine.in' }, '<');
 
-  tl.to('.eclipse-shadow', {
-    attr: { cx: 288 }, duration: sweepDur, ease: sweepEase
-  });
-  tl.to('.hero__text', {
-    opacity: 1, duration: sweepDur, ease: sweepEase
-  }, '<');
-  tl.to('.hero__moon-glow', {
-    opacity: 0.3, duration: sweepDur, ease: 'sine.in'
-  }, '<');
+  // Phase 3: Character settle
+  const nameSplit = new SplitType('.agency-name', { types: 'chars' });
+  const taglineSplit = new SplitType('.tagline', { types: 'words' });
+  const introSplit = new SplitType('.services-intro', { types: 'chars' });
+  tl.to('.hero__moon-glow', { opacity: 0.7, scale: 1.06, duration: 0.5, ease: 'power2.out' });
+  tl.to('.hero__moon-glow', { opacity: 0.4, scale: 1, duration: 0.9, ease: 'sine.inOut' });
+  tl.to(nameSplit.chars, { opacity: 1, x: 0, duration: 0.55, stagger: 0.028, ease: 'power3.out' }, '-=1.1');
+  tl.to(taglineSplit.words, { opacity: 1, x: 0, duration: 0.45, stagger: 0.05, ease: 'power3.out' }, '-=0.7');
+  tl.to(introSplit.chars, { opacity: 1, x: 0, duration: 0.35, stagger: 0.012, ease: 'power2.out' }, '-=0.4');
 
-  // Phase 3: Scroll — moon scales down
+  // Phase 4: Moon docks on scroll
   gsap.to('.hero__moon-container', {
-    scrollTrigger: {
-      trigger: '.hero',
-      start: '60% top',
-      end: 'bottom top',
-      scrub: 1
-    },
+    scrollTrigger: { trigger: '.hero', start: '60% top', end: 'bottom top', scrub: 1 },
     scale: 0.08,
     x: () => -window.innerWidth * 0.42,
     y: () => -window.innerHeight * 0.38,
     opacity: 0,
-    ease: 'none'
+    ease: 'none',
+  });
+  gsap.to('.moon-dock', {
+    scrollTrigger: { trigger: '.hero', start: '75% top', end: 'bottom top', scrub: 1 },
+    opacity: 1,
+    scale: 1,
+    ease: 'none',
   });
 
-  // Phase 5: Section reveals
-  gsap.utils.toArray('.section-panel').forEach(panel => {
-    gsap.fromTo(panel,
-      { opacity: 0.2, y: 60 },
-      {
-        opacity: 1, y: 0, duration: 1, ease: 'power2.out',
-        scrollTrigger: {
-          trigger: panel,
-          start: 'top 75%',
-          end: 'top 30%',
-          scrub: 1
-        }
-      }
-    );
+  // Scroll-reveal for sections below hero
+  gsap.utils.toArray('.service-col, .process-step, .automation, .spotlight, .cta').forEach((el) => {
+    gsap.fromTo(el, { opacity: 0, y: 40 }, {
+      opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none reverse' },
+    });
   });
 }
 
-// Auto-initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initAnimations);
 } else {

@@ -7,6 +7,7 @@ interface Props {
 
 const { title, description = 'Crescent Moon Design — We craft digital experiences that eclipse the ordinary.', image } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://crescentmoondesign.com');
+const base = import.meta.env.BASE_URL;
 ---
 
 <meta charset="UTF-8" />
@@ -25,6 +26,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://crescent
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
+
+<!-- Preload hero LCP image -->
+<link rel="preload" as="image" href={`${base}nightsky.webp`} imagesrcset={`${base}nightsky.webp`} imagesizes="100vw" />
 
 <title>{title}</title>
 

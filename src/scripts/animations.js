@@ -6,10 +6,6 @@ import SplitType from 'split-type';
 gsap.registerPlugin(ScrollTrigger);
 
 export function initAnimations() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.documentElement.classList.add('reduced-motion');
-    return;
-  }
 
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
@@ -60,8 +56,4 @@ export function initAnimations() {
   });
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initAnimations);
-} else {
-  initAnimations();
-}
+initAnimations();

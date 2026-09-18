@@ -274,7 +274,4 @@ button:focus-visible,
   font-weight: 600;
 }
 
-/* ---- legacy .section-panel cleanup (was forcing unwanted solid bg) ---- */
-.section-panel {
-  /* no-op: kept for compatibility; remove all hard styles */
-}
+
